@@ -1,40 +1,36 @@
-:root {
-	--orange: #f2683A;
-	--purple: #c350e6;
-	--blue: #65a9f6;
-	--green: #50e67d;
-	--yellow: #fff459;
-	--gray: #3a3a3a;
-	--black: #242526;
-	--orange-very-light: #fffbf9;
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap');
 
 * {
-	font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	height: 100vh;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
+    position: fixed;
+    bottom: 0;
 }
 
 button {
-	border: none;
-	padding: 10px 20px;
-	font-size: 15px !important;
+    border: none;
+}
+
+.my-btn {
+    padding: 10px 20px;
+    font-size: 15px !important;
 }
 
 .bg-orange {
-	background-color: var(--orange);
-	color: #fff;
+    background-color: var(--orange);
+    color: #fff;
 }
 
 input,
@@ -43,38 +39,90 @@ select,
 select:focus,
 textarea,
 textarea:focus {
-	border: none;
-	outline: none;
+    border: none;
+    outline: none;
 }
 
 .form-control {
-	background: var(--gray) !important;
-	color: var(--orange-very-light) !important;
-	font-weight: bold;
-	height: 53px !important;
+    background: var(--gray) !important;
+    color: var(--orange-very-light) !important;
+    font-weight: bold;
+    height: 55px !important;
+    padding: 0px 10px !important;
 }
 
 .form-login label {
-	font-size: 13px;
-	color: #fff !important;
+    font-size: 13px;
+    color: #fff !important;
 }
 
 
 .form-control:focus {
-	border: none !important;
+    border: none !important;
 }
 
 input,
 input::placeholder {
-	padding: 0px 10px !important;
-	font-size: 13px;
-	font-weight: 500;
+    padding: 0px 10px !important;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .radius-10 {
-	border-radius: 10px !important;
+    border-radius: 10px !important;
 }
 
-.form-login .logo {
-	height: 32px;
+.publication .profile {
+    width: 32px;
+}
+
+.publication .username {
+    font-size: 12px;
+    color: #fff;
+}
+
+
+.publication {
+    border-radius: 5px;
+    background: var(--gray);
+}
+
+.radius-100 {
+    border-radius: 100%;
+    border-radius: 20px;
+}
+
+.publication .card {
+    border: none;
+    background-color: var(--gray);
+}
+
+.actions button i {
+    font-size: 16px !important;
+}
+
+
+.actions button {
+    background-color: inherit !important;
+    color: #fff;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.publication .qty-likes {
+    font-size: 11px;
+}
+
+.publication .description {
+    font-size: 12px;
+}
+
+@media(min-width: 768px){
+    .img-publication {
+        max-height: 200px;
+        min-height: 200px;
+    }
 }

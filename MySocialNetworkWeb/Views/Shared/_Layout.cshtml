@@ -6,8 +6,9 @@
     <title>@ViewData["Title"] - MySocialNetworkWeb</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/font-awesome/all.min.css" />
-    <link rel="stylesheet" href="~/lib/font-awesome/all.min.js" />
+    @*<link rel="stylesheet" href="~/lib/font-awesome/all.min.css" />*@
+    @*<link rel="stylesheet" href="~/lib/font-awesome/all.min.js" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" integrity="sha512-Oy+sz5W86PK0ZIkawrG0iv7XwWhYecM3exvUtMKNJMekGFJtVAhibhRPTpmyTj8+lJCkmWfnpxKgT2OopquBHA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -37,12 +38,12 @@
                                 Daniel
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/Account/Login">Login</a></li>
-                                <li><a class="dropdown-item" href="/Account/Register">Criar conta</a></li>
+                                <li><a class="dropdown-item" href="/account/login">Login</a></li>
+                                <li><a class="dropdown-item" href="/account/register">Criar conta</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
                             </ul>
                         </li>
                     </ul>
