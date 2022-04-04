@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MySocialNetwork.Domain.Entities
+namespace MySocialNetwork.Domain.Entities.Publication
 {
     public sealed class Image : AbstractEntity
     {
-        public int PublicationId { get; set; }
-
         [Column(TypeName = "MEDIUMBLOB")]
         public byte[]? File { get; set; }
+
+        [Column(TypeName = "INT UNSIGNED")]
+        public int PublicationId { get; set; }
+
+        public Publication? Publication { get; set; }
     }
 }
 

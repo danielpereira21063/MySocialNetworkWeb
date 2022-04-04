@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MySocialNetwork.Domain.Entities
+namespace MySocialNetwork.Domain.Entities.User
 {
     public sealed class Address : AbstractEntity
     {
@@ -11,6 +11,7 @@ namespace MySocialNetwork.Domain.Entities
 
         [Column(TypeName = "VARCHAR(100)")]
         public string? Street { get; set; }
+
 
         [Column(TypeName = "VARCHAR(10)")]
         public string? Number { get; set; }
@@ -23,13 +24,19 @@ namespace MySocialNetwork.Domain.Entities
         [Column(TypeName = "VARCHAR(50)")]
         public string? City { get; set; }
 
+
         [Column(TypeName = "CHAR(2)")]
         public string? Region { get; set; }
+
 
         [Column(TypeName = "CHAR(8)")]
         public string? PostalCode { get; set; }
 
 
+        [Column(TypeName = "INT UNSIGNED")]
+        public int UserId { get; set; }
+
+        public User? User { get; set; }
 
         public void ValidateDomain()
         {
@@ -38,7 +45,7 @@ namespace MySocialNetwork.Domain.Entities
                 throw new Exception("Erro");
             }
 
-            if (PostalCode?.Length > 2)
+            if (PostalCode?.Length > 8)
             {
                 throw new Exception("Erro");
             }

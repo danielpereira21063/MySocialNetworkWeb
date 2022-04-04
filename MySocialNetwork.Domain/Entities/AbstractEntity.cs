@@ -1,4 +1,6 @@
-﻿namespace MySocialNetwork.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MySocialNetwork.Domain.Entities
 {
     public abstract class AbstractEntity
     {
@@ -11,6 +13,7 @@
             }
         }
 
+        [Column(TypeName = "INT UNSIGNED")]
         protected int Id { get; set; }
         protected DateTime CreatedAt { get; set; }
         protected DateTime UpdatedAt { get; set; }
