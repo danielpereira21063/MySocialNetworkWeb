@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MySocialNetworkWeb.Models;
-using System.Diagnostics;
 
 namespace MySocialNetworkWeb.Controllers
 {
