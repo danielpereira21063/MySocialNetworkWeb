@@ -38,7 +38,7 @@ namespace MySocialNetwork.Domain.Entities
                 throw new Exception("Erro");
             }
 
-            if(PostalCode?.Length > 2)
+            if (PostalCode?.Length > 2)
             {
                 throw new Exception("Erro");
             }
