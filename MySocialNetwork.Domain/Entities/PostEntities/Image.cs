@@ -13,6 +13,7 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
             PostId = postId;
             File = file;
         }
+
         [Column(TypeName = "MEDIUMBLOB")]
         public byte[]? File { get; private set; }
 

@@ -9,7 +9,7 @@ namespace MySocialNetwork.Infra.IoC
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection? AddInfrastructure(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -23,8 +23,6 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-
-            return services;
         }
     }
 }

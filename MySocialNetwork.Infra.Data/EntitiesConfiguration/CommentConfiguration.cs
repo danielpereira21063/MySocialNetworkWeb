@@ -11,7 +11,7 @@ namespace MySocialNetwork.Infra.Data.EntitiesConfiguration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Text).IsRequired();
             builder.HasOne(x => x.Post).WithMany(c => c.Comments).HasForeignKey(p => p.PostId);
-            builder.HasOne(x => x.CommentedBy).WithMany(c => c.Comments).HasForeignKey(p => p.CommentedById);
+            builder.HasOne(x => x.User).WithMany(c => c.Comments).HasForeignKey(u => u.UserId);
         }
     }
 }

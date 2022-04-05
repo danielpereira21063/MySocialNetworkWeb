@@ -15,7 +15,7 @@ namespace MySocialNetwork.Infra.Data.EntitiesConfiguration
             builder.Property(x => x.Complement).IsRequired();
             builder.Property(x => x.City).IsRequired();
             builder.Property(x => x.PostalCode).IsRequired();
-            builder.HasOne(x => x.User).WithMany(a => a.Addresses).HasForeignKey(x => x.UserId);
+            builder.HasOne(x => x.User).WithMany(a => a.Addresses).HasForeignKey(u => u.UserId);
         }
     }
 }

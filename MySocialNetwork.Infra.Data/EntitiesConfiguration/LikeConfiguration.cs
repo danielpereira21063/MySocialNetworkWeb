@@ -10,7 +10,7 @@ namespace MySocialNetwork.Infra.Data.EntitiesConfiguration
         {
             builder.HasKey(x => x.Id);
             builder.HasOne(x => x.Post).WithMany(a => a.Likes).HasForeignKey(l => l.PostId);
-            builder.HasOne(x => x.LikedBy).WithMany(a => a.Likes).HasForeignKey(l => l.LikedById);
+            builder.HasOne(x => x.User).WithMany(a => a.Likes).HasForeignKey(u => u.UserId);
         }
     }
 }

@@ -11,7 +11,7 @@ using MySocialNetwork.Infra.Data.Context;
 namespace MySocialNetwork.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220405145737_Initial")]
+    [Migration("20220405172214_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,6 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INT UNSIGNED");
 
-                    b.Property<uint>("CommentedById")
-                        .HasColumnType("INT UNSIGNED");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -43,11 +40,14 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<uint>("UserId")
+                        .HasColumnType("INT UNSIGNED");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CommentedById");
-
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -87,11 +87,8 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("IsLiked")
-                        .HasColumnType("INT UNSIGNED");
-
-                    b.Property<uint>("LikedById")
-                        .HasColumnType("INT UNSIGNED");
+                    b.Property<bool>("IsLiked")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<uint>("PostId")
                         .HasColumnType("INT UNSIGNED");
@@ -99,11 +96,14 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<uint>("UserId")
+                        .HasColumnType("INT UNSIGNED");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("LikedById");
-
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Likes");
                 });
@@ -216,21 +216,21 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Comment", b =>
                 {
-                    b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "CommentedBy")
-                        .WithMany("Comments")
-                        .HasForeignKey("CommentedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MySocialNetwork.Domain.Entities.PostEntities.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CommentedBy");
+                    b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Image", b =>
@@ -246,21 +246,21 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Like", b =>
                 {
-                    b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "LikedBy")
-                        .WithMany("Likes")
-                        .HasForeignKey("LikedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MySocialNetwork.Domain.Entities.PostEntities.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("LikedBy");
+                    b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Post", b =>

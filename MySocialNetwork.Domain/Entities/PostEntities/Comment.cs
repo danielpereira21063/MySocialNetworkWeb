@@ -7,12 +7,12 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
     [Table("Comments")]
     public sealed class Comment : AbstractEntity
     {
-        public Comment(int postId, int commentedById, string text)
+        public Comment(int postId, int userId, string text)
         {
             ValidateDomain();
 
             PostId = postId;
-            CommentedById = commentedById;
+            UserId = userId;
             Text = text;
         }
 
@@ -26,9 +26,9 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
 
         //Commented by
         [Column(TypeName = "INT UNSIGNED")]
-        public int CommentedById { get; set; }
+        public int UserId { get; set; }
 
-        public User? CommentedBy { get; set; }
+        public User? User { get; set; }
 
         private void ValidateDomain()
         {

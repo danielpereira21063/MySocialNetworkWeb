@@ -102,7 +102,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     PostId = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
                     Text = table.Column<string>(type: "TEXT", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CommentedById = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
+                    UserId = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -116,8 +116,8 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_Users_CommentedById",
-                        column: x => x.CommentedById,
+                        name: "FK_Comments_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -154,8 +154,8 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     Id = table.Column<uint>(type: "INT UNSIGNED", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PostId = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
-                    IsLiked = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
-                    LikedById = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
+                    IsLiked = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UserId = table.Column<uint>(type: "INT UNSIGNED", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -169,8 +169,8 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Likes_Users_LikedById",
-                        column: x => x.LikedById,
+                        name: "FK_Likes_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -183,14 +183,14 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_CommentedById",
-                table: "Comments",
-                column: "CommentedById");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
                 table: "Comments",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_UserId",
+                table: "Comments",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Images_PostId",
@@ -198,14 +198,14 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Likes_LikedById",
-                table: "Likes",
-                column: "LikedById");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Likes_PostId",
                 table: "Likes",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_UserId",
+                table: "Likes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_UserId",

@@ -7,22 +7,22 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
     [Table("Likes")]
     public sealed class Like : AbstractEntity
     {
-        public Like(int postId, int likedById, bool isLiked)
+        public Like(int postId, int userId, bool isLiked)
         {
             ValidateDomain();
 
             PostId = postId;
-            LikedById = likedById;
+            UserId = userId;
             IsLiked = isLiked;
         }
 
-        public Like(int postId, int likedById)
+        public Like(int postId, int userId)
         {
             ValidateDomain();
 
             PostId = postId;
             IsLiked = true;
-            LikedById = likedById;
+            UserId = userId;
         }
 
         [Column(TypeName = "INT UNSIGNED")]
@@ -30,15 +30,16 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
         public Post? Post { get; set; }
 
         //Liked by
-        [Column(TypeName = "INT UNSIGNED")]
         public bool IsLiked { get; private set; }
-        public int LikedById { get; set; }
-        public User? LikedBy { get; set; }
+
+        [Column(TypeName = "INT UNSIGNED")]
+        public int UserId { get; set; }
+        public User? User { get; set; }
 
         public void ValidateDomain()
         {
             DomainException.When(PostId < 0, "Postagem não informada.");
-            DomainException.When(LikedById < 0, "Usuário não informado.");
+            DomainException.When(UserId < 0, "Usuário não informado.");
         }
     }
 }
