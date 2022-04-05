@@ -1,12 +1,12 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
-
+using MySocialNetwork.Domain.ViewModel.Image;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IImageRepository
+    public interface IImageService
     {
-        void Create(Image? image);
-        void Update(Image? image);
-        void Remove(Image? image);
+        void Create(ImageViewModel? image);
+        void Update(ImageViewModel? image);
+        void Remove(ImageViewModel? image);
     }
 }

@@ -3,12 +3,12 @@ using MySocialNetwork.Domain.ViewModel.Address;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IAddressRepository
+    public interface IAddressService
     {
-        Address? GetById(int userId, int id);
+        AddressViewModel? GetById(int userId, int id);
         IEnumerable<AddressViewModel>? GetAllByUserId(int userId);
-        Address? Create(AddressViewModel? address);
-        Address? Update(AddressViewModel? address);
-        Address? Remove(AddressViewModel? address);
+        AddressViewModel? Create(AddressViewModel? address);
+        AddressViewModel? Update(AddressViewModel? address);
+        AddressViewModel? Remove(AddressViewModel? address);
     }
 }
