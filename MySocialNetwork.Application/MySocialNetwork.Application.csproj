@@ -10,4 +10,8 @@
     <ProjectReference Include="..\MySocialNetwork.Domain\MySocialNetwork.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

@@ -8,7 +8,7 @@ namespace MySocialNetwork.Infra.Data.Context
     {
         public ApplicationDbContext()
         {
-                
+
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

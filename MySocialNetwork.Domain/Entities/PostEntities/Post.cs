@@ -16,7 +16,7 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
             Images = images;
         }
 
-        public Post(string? subtitle)
+        public Post(int userId, string? subtitle)
         {
             ValidateDomain();
             Subtitle = subtitle;

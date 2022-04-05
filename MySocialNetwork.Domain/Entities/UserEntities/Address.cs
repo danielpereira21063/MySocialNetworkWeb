@@ -6,10 +6,6 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
     [Table("Addresses")]
     public sealed class Address : AbstractEntity
     {
-        public Address()
-        {
-        }
-
         public Address(int userId, string? street, string? number, string? complement, string? city, string? state, string? postalCode)
         {
             ValidateDomain();

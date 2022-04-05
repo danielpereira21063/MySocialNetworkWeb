@@ -1,13 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySocialNetwork.Domain.Entities.PostEntities;
+using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
+using MySocialNetwork.Domain.ViewModel.Address;
+using MySocialNetwork.Domain.ViewModel.Comment;
+using MySocialNetwork.Domain.ViewModel.Post;
+using MySocialNetwork.Domain.ViewModel.User;
 using MySocialNetwork.Infra.Data.Context;
 using MySocialNetwork.Infra.Data.Repositories;
 
 namespace MySocialNetwork.Infra.IoC
 {
-    public static class DependencyInjection
+    public static class Bootstrap
     {
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
@@ -23,6 +30,19 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            StartAutoMapper(services);
+        }
+
+        private static void StartAutoMapper(IServiceCollection services)
+        {
+            var mapperConfiguration = new MapperConfiguration(config =>
+            {
+                config.CreateMap<User, UserViewModel>().ReverseMap();
+                config.CreateMap<Address, AddressViewModel>().ReverseMap();
+                config.CreateMap<Post, PostViewModel>().ReverseMap();
+                config.CreateMap<Comment, CommentViewModel>().ReverseMap();
+            });
         }
     }
 }

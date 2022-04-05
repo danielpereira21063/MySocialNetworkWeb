@@ -6,8 +6,8 @@ namespace MySocialNetwork.Domain.Interfaces
     {
         Address? GetById(int userId, int id);
         IEnumerable<Address>? GetAllByUserId(int userId);
-        Address? Create(Address address);
-        Address? Update(Address address);
-        Address? Remove(Address address);
+        Address? Create(Address? address);
+        Address? Update(Address? address);
+        Address? Remove(Address? address);
     }
 }

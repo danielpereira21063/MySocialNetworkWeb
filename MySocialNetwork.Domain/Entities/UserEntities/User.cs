@@ -11,6 +11,14 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         {
 
         }
+        public User(string? name, string? email, DateTime birthDate)
+        {
+            ValidateDomain();
+
+            Name = name;
+            Email = email;
+            BirthDate = birthDate;
+        }
 
         public User(string? name, string? email, DateTime birthDate, byte[]? profilePicture)
         {
