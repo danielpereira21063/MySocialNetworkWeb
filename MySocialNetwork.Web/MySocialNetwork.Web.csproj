@@ -14,4 +14,8 @@
     <Content Include="uploads\users\publications\0\istockphoto2.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj" />
+  </ItemGroup>
+
 </Project>

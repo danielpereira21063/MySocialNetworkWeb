@@ -14,8 +14,8 @@ namespace MySocialNetwork.Domain.Entities
         }
 
         [Column(TypeName = "INT UNSIGNED")]
-        protected int Id { get; set; }
-        protected DateTime CreatedAt { get; set; }
-        protected DateTime UpdatedAt { get; set; }
+        public int Id { get; protected set; }
+        public DateTime CreatedAt { get; protected set; }
+        public DateTime UpdatedAt { get; protected set; }
     }
 }
