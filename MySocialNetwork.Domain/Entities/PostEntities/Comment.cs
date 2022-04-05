@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.PostEntities
 {
+    [Table("Comments")]
     public sealed class Comment : AbstractEntity
     {
         public Comment(int postId, int commentedById, string text)

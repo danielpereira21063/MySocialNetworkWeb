@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.PostEntities
 {
+    [Table("Posts")]
     public sealed class Post : AbstractEntity
     {
         public Post(int userId, string? subtitle, List<Image>? images)

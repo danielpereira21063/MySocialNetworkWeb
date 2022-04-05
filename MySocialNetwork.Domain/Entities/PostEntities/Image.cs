@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.PostEntities
 {
+    [Table("Images")]
     public sealed class Image : AbstractEntity
     {
         public Image(int postId, byte[]? file)

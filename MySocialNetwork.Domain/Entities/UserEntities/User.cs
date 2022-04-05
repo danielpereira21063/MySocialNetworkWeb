@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.UserEntities
 {
+    [Table("Users")]
     public sealed class User : AbstractEntity
     {
         public User()

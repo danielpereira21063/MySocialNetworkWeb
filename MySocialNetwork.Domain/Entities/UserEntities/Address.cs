@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.UserEntities
 {
+    [Table("Addresses")]
     public sealed class Address : AbstractEntity
     {
         public Address()

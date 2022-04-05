@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySocialNetwork.Domain.Entities.PostEntities
 {
+    [Table("Likes")]
     public sealed class Like : AbstractEntity
     {
         public Like(int postId, int likedById, bool isLiked)
