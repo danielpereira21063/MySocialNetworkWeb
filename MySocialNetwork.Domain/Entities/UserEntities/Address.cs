@@ -9,10 +9,11 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         {
         }
 
-        public Address(string? street, string? number, string? complement, string? city, string? state, string? postalCode)
+        public Address(int userId, string? street, string? number, string? complement, string? city, string? state, string? postalCode)
         {
             ValidateDomain();
 
+            UserId = userId;
             Street = street;
             Number = number;
             Complement = complement;
@@ -52,8 +53,14 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
 
         public bool Main { get; private set; }
 
-        public void ValidateDomain()
+        private void ValidateDomain()
         {
+            DomainException.When(UserId < 0, "Usuário não informado.");
+            DomainException.When(PostalCode?.Length == 8, "CEP é um campo obrigatório.");
+            DomainException.When(City?.Length == 0, "Cidade é um campo obrigatório.");
+            DomainException.When(Number?.Length == 0, "Número é um campo obrigatório.");
+            DomainException.When(State?.Length == 0, "Estado é um campo obrigatório.");
+            DomainException.When(Complement?.Length == 0, "Complemento é um campo obrigatório.");
             DomainException.When(State?.Length != 2, "O Estado deve ser composto por 2 caracteres.");
             DomainException.When(PostalCode?.Length != 8, "CEP inválido.");
         }
