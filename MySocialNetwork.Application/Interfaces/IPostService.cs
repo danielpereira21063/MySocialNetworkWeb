@@ -5,8 +5,8 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface IPostService
     {
-        IEnumerable<PostViewModel>? GetAllByUserId(int userId);
-        PostViewModel? GetById(int userId, int postId);
+        IEnumerable<PostViewModel>? FindAllByUserId(int userId);
+        PostViewModel? Find(int userId, int postId);
         PostViewModel? Create(PostViewModel? post);
         PostViewModel? Update(PostViewModel? post);
         PostViewModel? Remove(Post? post);

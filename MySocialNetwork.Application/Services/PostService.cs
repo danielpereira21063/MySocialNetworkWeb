@@ -16,12 +16,12 @@ namespace MySocialNetwork.Application.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PostViewModel>? GetAllByUserId(int userId)
+        public IEnumerable<PostViewModel>? FindAllByUserId(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public PostViewModel? GetById(int userId, int postId)
+        public PostViewModel? Find(int userId, int postId)
         {
             throw new NotImplementedException();
         }

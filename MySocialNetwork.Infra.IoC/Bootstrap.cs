@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Application.Services;
 using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
@@ -30,6 +32,8 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IUserService, UserService>();
 
             StartAutoMapper(services);
         }

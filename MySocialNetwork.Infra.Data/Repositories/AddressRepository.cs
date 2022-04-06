@@ -5,17 +5,17 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class AddressRepository : IAddressRepository
     {
-        public Address? Create(Address address)
+        public Address? Create(Address? address)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Address>? GetAllByUserId(int userId)
+        public IEnumerable<Address>? FindAll(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public Address? GetById(int userId, int id)
+        public Address? Find(int userId, int id)
         {
             throw new NotImplementedException();
         }

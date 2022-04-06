@@ -5,7 +5,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class ImageRepository : IImageRepository
     {
-        public IEnumerable<Image>? GetAllByPostId(int postId)
+        public IEnumerable<Image>? FindAll(int postId)
         {
             throw new NotImplementedException();
         }

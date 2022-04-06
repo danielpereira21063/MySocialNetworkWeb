@@ -4,7 +4,10 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        User? GetById(int id);
-        IEnumerable<User>? GetAll(string searchString);
+        User? Find(int id);
+        void Create(User user);
+        void Update(User user);
+        void Remove(User user);
+        IEnumerable<User>? FindAll(string? searchString);
     }
 }

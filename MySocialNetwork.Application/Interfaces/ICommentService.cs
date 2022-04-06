@@ -5,7 +5,7 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface ICommentService
     {
-        IEnumerable<CommentViewModel> GetAllByPostId(int userId, int postId);
+        IEnumerable<CommentViewModel> FindAll(int userId, int postId);
         CommentViewModel? Create(CommentViewModel comment);
         CommentViewModel? Update(CommentViewModel comment);
         CommentViewModel? Remove(CommentViewModel comment);

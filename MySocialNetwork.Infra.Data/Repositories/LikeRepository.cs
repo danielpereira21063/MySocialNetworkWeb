@@ -10,7 +10,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Like>? GetAllByPostId(int userId, int postId)
+        public IEnumerable<Like>? FindAll(int userId, int postId)
         {
             throw new NotImplementedException();
         }

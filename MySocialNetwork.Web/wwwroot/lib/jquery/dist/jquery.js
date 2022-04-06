@@ -1197,13 +1197,13 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Check if getElementById returns elements by name
 	// The broken getElementById methods don't pick up programmatically-set names,
 	// so use a roundabout getElementsByName test
-	support.getById = assert( function( el ) {
+	support.Find = assert( function( el ) {
 		docElem.appendChild( el ).id = expando;
 		return !document.getElementsByName || !document.getElementsByName( expando ).length;
 	} );
 
 	// ID filter and find
-	if ( support.getById ) {
+	if ( support.Find ) {
 		Expr.filter[ "ID" ] = function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
@@ -4958,7 +4958,7 @@ if ( !support.option ) {
 }
 
 
-function getAll( context, tag ) {
+function FindAll( context, tag ) {
 
 	// Support: IE <=9 - 11 only
 	// Use typeof to avoid zero-argument method invocation on host objects (#15151)
@@ -5067,7 +5067,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 		attached = isAttached( elem );
 
 		// Append to fragment
-		tmp = getAll( fragment.appendChild( elem ), "script" );
+		tmp = FindAll( fragment.appendChild( elem ), "script" );
 
 		// Preserve script evaluation history
 		if ( attached ) {
@@ -6079,7 +6079,7 @@ function domManip( collection, args, callback, ignored ) {
 
 		// Require either new content or an interest in ignored elements to invoke the callback
 		if ( first || ignored ) {
-			scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
+			scripts = jQuery.map( FindAll( fragment, "script" ), disableScript );
 			hasScripts = scripts.length;
 
 			// Use the original fragment for the last item
@@ -6096,7 +6096,7 @@ function domManip( collection, args, callback, ignored ) {
 
 						// Support: Android <=4.0 only, PhantomJS 1 only
 						// push.apply(_, arraylike) throws on ancient WebKit
-						jQuery.merge( scripts, getAll( node, "script" ) );
+						jQuery.merge( scripts, FindAll( node, "script" ) );
 					}
 				}
 
@@ -6143,12 +6143,12 @@ function remove( elem, selector, keepData ) {
 
 	for ( ; ( node = nodes[ i ] ) != null; i++ ) {
 		if ( !keepData && node.nodeType === 1 ) {
-			jQuery.cleanData( getAll( node ) );
+			jQuery.cleanData( FindAll( node ) );
 		}
 
 		if ( node.parentNode ) {
 			if ( keepData && isAttached( node ) ) {
-				setGlobalEval( getAll( node, "script" ) );
+				setGlobalEval( FindAll( node, "script" ) );
 			}
 			node.parentNode.removeChild( node );
 		}
@@ -6171,9 +6171,9 @@ jQuery.extend( {
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
 				!jQuery.isXMLDoc( elem ) ) {
 
-			// We eschew Sizzle here for performance reasons: https://jsperf.com/getall-vs-sizzle/2
-			destElements = getAll( clone );
-			srcElements = getAll( elem );
+			// We eschew Sizzle here for performance reasons: https://jsperf.com/FindAll-vs-sizzle/2
+			destElements = FindAll( clone );
+			srcElements = FindAll( elem );
 
 			for ( i = 0, l = srcElements.length; i < l; i++ ) {
 				fixInput( srcElements[ i ], destElements[ i ] );
@@ -6183,8 +6183,8 @@ jQuery.extend( {
 		// Copy the events from the original to the clone
 		if ( dataAndEvents ) {
 			if ( deepDataAndEvents ) {
-				srcElements = srcElements || getAll( elem );
-				destElements = destElements || getAll( clone );
+				srcElements = srcElements || FindAll( elem );
+				destElements = destElements || FindAll( clone );
 
 				for ( i = 0, l = srcElements.length; i < l; i++ ) {
 					cloneCopyEvent( srcElements[ i ], destElements[ i ] );
@@ -6195,9 +6195,9 @@ jQuery.extend( {
 		}
 
 		// Preserve script evaluation history
-		destElements = getAll( clone, "script" );
+		destElements = FindAll( clone, "script" );
 		if ( destElements.length > 0 ) {
-			setGlobalEval( destElements, !inPage && getAll( elem, "script" ) );
+			setGlobalEval( destElements, !inPage && FindAll( elem, "script" ) );
 		}
 
 		// Return the cloned set
@@ -6302,7 +6302,7 @@ jQuery.fn.extend( {
 			if ( elem.nodeType === 1 ) {
 
 				// Prevent memory leaks
-				jQuery.cleanData( getAll( elem, false ) );
+				jQuery.cleanData( FindAll( elem, false ) );
 
 				// Remove any remaining nodes
 				elem.textContent = "";
@@ -6343,7 +6343,7 @@ jQuery.fn.extend( {
 
 						// Remove element nodes and prevent memory leaks
 						if ( elem.nodeType === 1 ) {
-							jQuery.cleanData( getAll( elem, false ) );
+							jQuery.cleanData( FindAll( elem, false ) );
 							elem.innerHTML = value;
 						}
 					}
@@ -6368,7 +6368,7 @@ jQuery.fn.extend( {
 			var parent = this.parentNode;
 
 			if ( jQuery.inArray( this, ignored ) < 0 ) {
-				jQuery.cleanData( getAll( this ) );
+				jQuery.cleanData( FindAll( this ) );
 				if ( parent ) {
 					parent.replaceChild( elem, this );
 				}
@@ -9453,7 +9453,7 @@ jQuery.extend( {
 				},
 
 				// Raw string
-				getAllResponseHeaders: function() {
+				FindAllResponseHeaders: function() {
 					return completed ? responseHeadersString : null;
 				},
 
@@ -10055,7 +10055,7 @@ jQuery.ajaxTransport( function( options ) {
 									typeof xhr.responseText !== "string" ?
 										{ binary: xhr.response } :
 										{ text: xhr.responseText },
-									xhr.getAllResponseHeaders()
+									xhr.FindAllResponseHeaders()
 								);
 							}
 						}

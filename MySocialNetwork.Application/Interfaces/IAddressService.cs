@@ -5,8 +5,8 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface IAddressService
     {
-        AddressViewModel? GetById(int userId, int id);
-        IEnumerable<AddressViewModel>? GetAllByUserId(int userId);
+        AddressViewModel? Find(int userId, int id);
+        IEnumerable<AddressViewModel>? FindAllByUserId(int userId);
         AddressViewModel? Create(AddressViewModel? address);
         AddressViewModel? Update(AddressViewModel? address);
         AddressViewModel? Remove(AddressViewModel? address);

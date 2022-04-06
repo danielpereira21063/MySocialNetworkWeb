@@ -10,12 +10,14 @@ namespace MySocialNetwork.Application.Services
 {
     public class CommentService : ICommentService
     {
+
+
         public CommentViewModel? Create(CommentViewModel comment)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CommentViewModel> GetAllByPostId(int userId, int postId)
+        public IEnumerable<CommentViewModel> FindAll(int userId, int postId)
         {
             throw new NotImplementedException();
         }

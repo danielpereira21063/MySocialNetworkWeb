@@ -5,6 +5,6 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface IImageRepository
     {
-        IEnumerable<Image>? GetAllByPostId(int postId);
+        IEnumerable<Image>? FindAll(int postId);
     }
 }

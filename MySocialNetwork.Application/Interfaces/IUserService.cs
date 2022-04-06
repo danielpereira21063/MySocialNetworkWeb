@@ -10,10 +10,10 @@ namespace MySocialNetwork.Application.Interfaces
 {
     public interface IUserService
     {
-        IEnumerable<UserViewModel>? GetUsers();
+        IEnumerable<UserViewModel>? GetAll(string? searchString);
         UserViewModel? GetUser(int id);
-        void Add(UserViewModel? user);
-        void Update(UserViewModel? user);
-        void Remove(UserViewModel? user);
+        void Create(UserViewModel user);
+        void Update(UserViewModel user);
+        void Remove(UserViewModel user);
     }
 }

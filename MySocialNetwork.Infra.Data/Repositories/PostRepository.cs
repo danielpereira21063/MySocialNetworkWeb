@@ -10,12 +10,12 @@ namespace MySocialNetwork.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Post>? GetAllByUserId(int userId)
+        public IEnumerable<Post>? FindAll(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public Post? GetById(int userId, int postId)
+        public Post? Find(int userId, int postId)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,7 @@
-﻿using MySocialNetwork.Application.Interfaces;
+﻿using AutoMapper;
+using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.Entities.UserEntities;
+using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.User;
 using System;
 using System.Collections.Generic;
@@ -10,29 +13,43 @@ namespace MySocialNetwork.Application.Services
 {
     public class UserService : IUserService
     {
-        public void Add(UserViewModel? user)
+        private readonly IUserRepository? _userRepositoy;
+        private readonly IMapper? _mapper;
+
+        public UserService(IUserRepository? userRepository, IMapper? mapper)
         {
-            throw new NotImplementedException();
+            _userRepositoy = userRepository;
+            _mapper = mapper;
+        }
+
+        public void Create(UserViewModel? user)
+        {
+            var userEntity = _mapper?.Map<User>(user);
+            _userRepositoy?.Create(userEntity);
         }
 
         public UserViewModel? GetUser(int id)
         {
-            throw new NotImplementedException();
+            var userEntity = _userRepositoy?.Find(id);
+            return _mapper?.Map<UserViewModel>(userEntity);
         }
 
-        public IEnumerable<UserViewModel>? GetUsers()
+        public IEnumerable<UserViewModel>? GetAll(string? searchString)
         {
-            throw new NotImplementedException();
+            var usersEntity = _userRepositoy?.FindAll(searchString);
+            return _mapper?.Map<List<UserViewModel>>(usersEntity);
         }
 
         public void Remove(UserViewModel? user)
         {
-            throw new NotImplementedException();
+            var userEntity = _mapper?.Map<User>(user);
+            _userRepositoy?.Remove(userEntity);
         }
 
         public void Update(UserViewModel? user)
         {
-            throw new NotImplementedException();
+            var userEntity = _mapper?.Map<User>(user);
+            _userRepositoy?.Update(userEntity);
         }
     }
 }

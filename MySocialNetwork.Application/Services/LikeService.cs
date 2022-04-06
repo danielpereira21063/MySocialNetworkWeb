@@ -15,7 +15,7 @@ namespace MySocialNetwork.Application.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LikeViewModel>? GetAllByPostId(int userId, int postId)
+        public IEnumerable<LikeViewModel>? FindAll(int userId, int postId)
         {
             throw new NotImplementedException();
         }
