@@ -24,7 +24,7 @@ namespace MySocialNetwork.Application.Services
         public AddressViewModel? Create(AddressViewModel? address)
         {
             var addressEntity = _mapper?.Map<Address>(address);
-            _addressRepository?.Create(addressEntity);
+            _addressRepository?.Save(addressEntity);
             return address;
         }
 

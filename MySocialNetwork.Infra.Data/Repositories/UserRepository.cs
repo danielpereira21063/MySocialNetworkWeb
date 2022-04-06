@@ -13,7 +13,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
             _userContext = context;
         }
 
-        public void Create(User user)
+        public void Save(User user)
         {
             _userContext?.Add(user);
             _userContext?.SaveChanges();

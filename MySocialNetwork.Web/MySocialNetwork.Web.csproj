@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\icons\caret-down-fill.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="uploads\users\profiles\0\daniel.png" />
     <Content Include="uploads\users\publications\0\grand-canal-veneza.jpg" />
     <Content Include="uploads\users\publications\0\group-old-healthy.jpg" />
@@ -16,6 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\icons\caret-down-fill.svg" />
   </ItemGroup>
 
 </Project>

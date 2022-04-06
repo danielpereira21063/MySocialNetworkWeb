@@ -5,7 +5,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class PostRepository : IPostRepository
     {
-        public Post? Create(Post post)
+        public Post? Save(Post post)
         {
             throw new NotImplementedException();
         }

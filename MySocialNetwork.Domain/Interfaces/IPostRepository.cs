@@ -6,7 +6,7 @@ namespace MySocialNetwork.Domain.Interfaces
     {
         IEnumerable<Post>? FindAll(int userId);
         Post? Find(int userId, int postId);
-        Post? Create(Post post);
+        Post? Save(Post post);
         Post? Update(Post post);
         Post? Remove(Post post);
     }

@@ -6,7 +6,7 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
     [Table("Addresses")]
     public sealed class Address : AbstractEntity
     {
-        public Address(int userId, string? street, string? number, string? complement, string? city, string? state, string? postalCode)
+        public Address(int userId, string? street, string? number, string? complement, string? city, string? state, string? postalCode, string? district)
         {
             ValidateDomain();
 
@@ -16,6 +16,7 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
             Complement = complement;
             City = city;
             State = state;
+            District = district;
             PostalCode = postalCode;
         }
 
@@ -42,6 +43,8 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         [Column(TypeName = "CHAR(8)")]
         public string? PostalCode { get; private set; }
 
+        [Column(TypeName = "VARCHAR(32)")]
+        public string? District { get; private set; }
 
         [Column(TypeName = "INT UNSIGNED")]
         public int UserId { get; set; }

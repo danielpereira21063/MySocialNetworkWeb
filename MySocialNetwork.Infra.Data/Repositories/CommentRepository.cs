@@ -5,7 +5,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
-        public Comment? Create(Comment comment)
+        public Comment? Save(Comment comment)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MySocialNetwork.Domain.ViewModel.Address;
+using System.ComponentModel.DataAnnotations;
 
 namespace MySocialNetwork.Domain.ViewModel.User
 {
@@ -17,8 +18,17 @@ namespace MySocialNetwork.Domain.ViewModel.User
         [MinLength(3, ErrorMessage = "O email deve conter ao menos 3 caracteres.")]
         public string? Email { get; set; }
 
+
+        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "Informa uma senha.")]
+        [MinLength(8, ErrorMessage = "A senha deve ter no mínimo 8 caracteres.")]
+        public string? Password { get; set; }
+
+
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Informe sua data de nascimento.")]
         public DateTime BirthDate { get; set; }
+
+        public AddressViewModel Address { get; set; }
     }
 }

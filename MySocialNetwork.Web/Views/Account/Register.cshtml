@@ -1,50 +1,133 @@
-﻿@model MySocialNetwork.Domain.ViewModel.User.UserRegisterViewModel
+﻿@model MySocialNetwork.Domain.ViewModel.User.UserViewModel
 
 @{
     Layout = "_Layout_no-navbar";
 }
 
-<div class="container">
+<div class="container" id="viewRegister">
     <div class="row d-flex justify-content-center vh-100">
-        <div class="col-md-8 m-auto px-1">
-
+        <div class="col-lg-12 m-auto">
             <form class="form-login d-flex flex-column" asp-controller="Account" asp-action="Register" method="post">
-                <img src="./../img/logo.png" alt="The Daniel´s" class="logo mx-auto">
-                <h6 class="text-center fw-bold mt-3 mb-4">
-                    Nova conta - The Daniel´s
-                </h6>
+                <div class="row px-3 py-4 rounded shadow bg-body">
+                    <img src="./../img/logo.png" alt="The Daniel´s" class="logo mx-auto">
+                    <h6 class="text-center fw-bold mt-3 mb-4">
+                        Nova conta - The Daniel´s
+                    </h6>
 
-                <div class="mb-2">
-                    <label class="form-label" asp-for="Name"></label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Nome" asp-for="Name">
-                </div>
-                <div class="mb-2">
-                    <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="Endereço de email" asp-for="Email">
-                </div>
-                <div class="mb-2">
-                    <label for="exampleInputPassword1" class="form-label" asp-for="Password">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Informe sua senha" asp-for="Password">
-                </div>
-                <div class="mb-2">
-                    <label for="exampleInputPassword1" class="form-label" asp-for="ConfirmPassword">Confirmar senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                           placeholder="Confirme sua senha" asp-for="ConfirmPassword">
-                </div>
+                    <hr />
 
-                <div class="col-lg-4">
-                    <button class="my-btn bg-orange radius-10 mt-2" type="submit">Criar conta</button>
+                    <div class="col-lg-6">
+                        <h6 class="my-3"><i class="fa-solid fa-user me-1"></i> Informações da conta</h6>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="Name"></label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Nome" asp-for="Name">
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Endereço de email" asp-for="Email">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="Password">Senha</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Informe sua senha" asp-for="Password">
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Confirmar senha</label>
+                            <input type="password" class="form-control" name="passwordConfirmation" id="exampleInputPassword1"
+                                   placeholder="Confirme sua senha">
+                            <span class="text-danger" id="passConfirmError"></span>
+                        </div>
+                    </div>
 
-                    <div class="mt-4" style="font-size: 13px;">
-                        <p>Já tem uma conta? <a href="/account/login">Fazer login</a></p>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <h6 class="my-3"><i class="fa-solid fa-location-dot me-1"></i> Informações da endereço</h6>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-2">
+                                    <label class="form-label" asp-for="Address.PostalCode"></label>
+                                    <input type="text" class="form-control" asp-for="Address.PostalCode" placeholder="00000-000" />
+                                    <span class="text-danger" asp-validation-for="Address.PostalCode"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label asp-for=Address.State></label>
+                                    <select id="selectState" v-on:change="getCities()" class="form-select form-select-lg">
+                                        <option>Selecione</option>
+                                        <option v-for="state in addresses.states" v-bind:value="state.sigla">{{state.nome}}</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="Address.State"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label asp-for=Address.City></label>
+                                    <select class="form-select form-select-lg">
+                                        <option>Selecione</option>
+                                        <option v-for="state in addresses.states" v-bind:value="state.sigla">{{state.nome}}</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="Address.City"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label class="form-label" asp-for="Address.District"></label>
+                                    <input type="text" class="form-control" asp-for="Address.District"
+                                           placeholder="Ex.: Bairro">
+                                    <span class="text-danger" asp-validation-for="Address.District"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label class="form-label" asp-for="Address.Complement"></label>
+                                    <input type="text" class="form-control" asp-for="Address.Complement"
+                                           placeholder="Ex.: Casa">
+                                    <span class="text-danger" asp-validation-for="Address.Complement"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label class="form-label" asp-for="Address.Street"></label>
+                                    <input type="text" class="form-control" asp-for="Address.Street"
+                                           placeholder="Nome da rua">
+                                    <span class="text-danger" asp-validation-for="Address.Street"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="mb-2">
+                                    <label class="form-label" asp-for="Address.Number"></label>
+                                    <input type="text" class="form-control" asp-for="Address.Number" id="exampleInputPassword1"
+                                           placeholder="Ex.: 00">
+                                    <span class="text-danger" asp-validation-for="Address.Number"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <button class="my-btn bg-orange radius-10 mt-2" type="submit">Criar conta</button>
+
+                        <div class="mt-4" style="font-size: 13px;">
+                            <p>Já tem uma conta? <a href="/account/login">Fazer login</a></p>
+                        </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>
 </div>
+
+@Html?.Partial("../Shared/_ValidationScriptsPartial.cshtml")
+<script src="~/js/Vue/Account/Register.js"></script>

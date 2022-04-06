@@ -5,7 +5,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class AddressRepository : IAddressRepository
     {
-        public Address? Create(Address? address)
+        public Address? Save(Address? address)
         {
             throw new NotImplementedException();
         }

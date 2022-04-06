@@ -5,7 +5,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class LikeRepository : ILikeRepository
     {
-        public Like? Create(Like like)
+        public Like? Save(Like like)
         {
             throw new NotImplementedException();
         }

@@ -43,12 +43,17 @@ textarea:focus {
     outline: none;
 }
 
-.form-control {
-    background: var(--gray) !important;
+.form-control, .form-select{
+    background-color: var(--gray) !important;
     color: var(--orange-very-light) !important;
     font-weight: bold;
     height: 55px !important;
     padding: 0px 10px !important;
+}
+
+.form-select {
+    background-image: url("/img/icons/caret-down-fill.svg") !important;
+    font-size: 13px;
 }
 
 .form-login label {

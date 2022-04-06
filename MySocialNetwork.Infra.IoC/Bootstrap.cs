@@ -47,6 +47,9 @@ namespace MySocialNetwork.Infra.IoC
                 config.CreateMap<Post, PostViewModel>().ReverseMap();
                 config.CreateMap<Comment, CommentViewModel>().ReverseMap();
             });
+
+            IMapper mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }

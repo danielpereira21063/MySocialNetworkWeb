@@ -25,7 +25,7 @@ namespace MySocialNetwork.Application.Services
         public void Create(UserViewModel? user)
         {
             var userEntity = _mapper?.Map<User>(user);
-            _userRepositoy?.Create(userEntity);
+            _userRepositoy?.Save(userEntity);
         }
 
         public UserViewModel? GetUser(int id)
