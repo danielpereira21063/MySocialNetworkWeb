@@ -23,10 +23,8 @@
         },
 
         getCities() {
-
             var thisvue = this;
             var uf = $("#selectState :selected").val();
-            if (!uf) return;
 
             $.ajax({
                 type: "get",

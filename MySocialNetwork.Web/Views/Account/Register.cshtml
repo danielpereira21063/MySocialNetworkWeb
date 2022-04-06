@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Confirmar senha</label>
-                            <input type="password" class="form-control" name="passwordConfirmation" id="exampleInputPassword1"
+                            <input type="password" class="form-control" name="passwordConfirmation"
                                    placeholder="Confirme sua senha">
                             <span class="text-danger" id="passConfirmError"></span>
                         </div>
@@ -59,8 +59,8 @@
                             <div class="col-6">
                                 <div class="mb-2">
                                     <label asp-for=Address.State></label>
-                                    <select id="selectState" v-on:change="getCities()" class="form-select form-select-lg">
-                                        <option>Selecione</option>
+                                    <select id="selectState" v-on:change="getCities()" class="form-select form-select-lg" asp-for="Address.State">
+                                        <option value="">Selecione</option>
                                         <option v-for="state in addresses.states" v-bind:value="state.sigla">{{state.nome}}</option>
                                     </select>
                                     <span class="text-danger" asp-validation-for="Address.State"></span>
@@ -70,9 +70,9 @@
                             <div class="col-6">
                                 <div class="mb-2">
                                     <label asp-for=Address.City></label>
-                                    <select class="form-select form-select-lg">
-                                        <option>Selecione</option>
-                                        <option v-for="state in addresses.states" v-bind:value="state.sigla">{{state.nome}}</option>
+                                    <select class="form-select form-select-lg" asp-for="Address.City">
+                                        <option value="">Selecione</option>
+                                        <option v-for="city in addresses.cities" v-bind:value="city.nome">{{city.nome}}</option>
                                     </select>
                                     <span class="text-danger" asp-validation-for="Address.City"></span>
                                 </div>
@@ -108,7 +108,7 @@
                             <div class="col-6">
                                 <div class="mb-2">
                                     <label class="form-label" asp-for="Address.Number"></label>
-                                    <input type="text" class="form-control" asp-for="Address.Number" id="exampleInputPassword1"
+                                    <input type="text" class="form-control" asp-for="Address.Number"
                                            placeholder="Ex.: 00">
                                     <span class="text-danger" asp-validation-for="Address.Number"></span>
                                 </div>

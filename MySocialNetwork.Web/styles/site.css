@@ -53,7 +53,7 @@ textarea:focus {
 
 .form-select {
     background-image: url("/img/icons/caret-down-fill.svg") !important;
-    font-size: 13px;
+    font-size: 1rem;
 }
 
 .form-login label {
