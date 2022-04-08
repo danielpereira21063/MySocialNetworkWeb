@@ -1,4 +1,4 @@
-namespace MySocialNetworkWeb.Models
+namespace MySocialNetwork.WebUI.Models
 {
     public class ErrorViewModel
     {

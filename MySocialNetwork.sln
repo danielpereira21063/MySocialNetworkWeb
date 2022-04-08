@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Web", "MySocialNetwork.Web\MySocialNetwork.Web.csproj", "{A0F7C13F-48B2-4537-8AA7-05D4D33453C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.WebUI", "MySocialNetwork.WebUI\MySocialNetwork.WebUI.csproj", "{A0F7C13F-48B2-4537-8AA7-05D4D33453C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Domain", "MySocialNetwork.Domain\MySocialNetwork.Domain.csproj", "{8D09EA45-6FD2-401D-8DF1-11B7BD8C1B10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialNetwork.Application", "MySocialNetwork.Application\MySocialNetwork.Application.csproj", "{1A458FDA-B1C6-485B-A26F-C7F75B7F7474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Application", "MySocialNetwork.Application\MySocialNetwork.Application.csproj", "{1A458FDA-B1C6-485B-A26F-C7F75B7F7474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialNetwork.Infra.Data", "MySocialNetwork.Infra.Data\MySocialNetwork.Infra.Data.csproj", "{3D2AEFD6-906B-480B-9AF1-0D35865AEBE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Infra.Data", "MySocialNetwork.Infra.Data\MySocialNetwork.Infra.Data.csproj", "{3D2AEFD6-906B-480B-9AF1-0D35865AEBE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialNetwork.Infra.IoC", "MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj", "{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Infra.IoC", "MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj", "{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MySocialNetworkWeb.Controllers
+namespace MySocialNetwork.WebUI.Controllers
 {
     public class HomeController : Controller
     {

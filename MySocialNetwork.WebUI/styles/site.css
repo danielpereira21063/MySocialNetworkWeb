@@ -41,13 +41,13 @@ textarea,
 textarea:focus {
     border: none;
     outline: none;
+    font-size: 13px !important;
 }
 
-.form-control, .form-select{
+.form-control, .form-select {
     background-color: var(--gray) !important;
     color: var(--orange-very-light) !important;
-    font-weight: bold;
-    height: 55px !important;
+    height: 45px;
     padding: 0px 10px !important;
 }
 
@@ -125,7 +125,7 @@ input::placeholder {
     font-size: 12px;
 }
 
-@media(min-width: 576px){
+@media(min-width: 576px) {
     .img-publication {
         max-height: 200px;
         min-height: 200px;

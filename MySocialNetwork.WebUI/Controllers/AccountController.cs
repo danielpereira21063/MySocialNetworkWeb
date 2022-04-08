@@ -5,7 +5,7 @@ using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.Validation;
 using MySocialNetwork.Domain.ViewModel.User;
 
-namespace MySocialNetworkWeb.Controllers
+namespace MySocialNetwork.WebUI.Controllers
 {
     public class AccountController : Controller
     {

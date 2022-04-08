@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danielpereira21063/MySocialNetworkWeb.git"
+    "url": "git+https://github.com/danielpereira21063/MySocialNetwork.WebUI.git"
   },
   "author": "Daniel Pereira Sanches",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danielpereira21063/MySocialNetworkWeb/issues"
+    "url": "https://github.com/danielpereira21063/MySocialNetwork.WebUI/issues"
   },
-  "homepage": "https://github.com/danielpereira21063/MySocialNetworkWeb#readme"
+  "homepage": "https://github.com/danielpereira21063/MySocialNetwork.WebUI#readme"
 }
