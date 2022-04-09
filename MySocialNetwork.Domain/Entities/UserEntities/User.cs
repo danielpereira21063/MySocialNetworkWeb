@@ -31,21 +31,21 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         }
 
         [Column(TypeName = "VARCHAR(250)")]
-        public string? Name { get; private set; }
+        public string? Name { get; set; }
 
 
         [Column(TypeName = "VARCHAR(250)")]
-        public string? Email { get; private set; }
+        public string? Email { get; set; }
 
-        public DateTime BirthDate { get; private set; }
+        public DateTime BirthDate { get; set; }
 
 
         [Column(TypeName = "MEDIUMBLOB")]
-        public byte[]? ProfilePicture { get; private set; }
+        public byte[]? ProfilePicture { get; set; }
 
         public List<Comment>? Comments { get; set; }
         public List<Like>? Likes { get; set; }
-        public List<Address>? Addresses { get; set; }
+        public List<Address>? Addresses { get; set; } = new List<Address>();
         public List<Post>? Posts { get; set; }
 
         private void ValidateDomain()

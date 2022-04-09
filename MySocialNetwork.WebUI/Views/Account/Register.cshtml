@@ -1,4 +1,4 @@
-﻿@model MySocialNetwork.Domain.ViewModel.User.UserViewModel
+﻿@model MySocialNetwork.Domain.ViewModel.User.UserRegisterViewModel
 
 @{
     Layout = "_Layout_no-navbar";
@@ -9,38 +9,60 @@
         <div class="col-lg-12 m-auto">
             <form class="form-login d-flex flex-column" asp-controller="Account" asp-action="Register" method="post">
                 <div class="row px-3 py-4 rounded shadow bg-body">
-                    <img src="./../img/logo.png" alt="The Daniel´s" class="logo mx-auto">
+                    <img src="./../img/logo.png" alt="The Daniel´s" style="height: 50px!important;width: 70px!important;" class="logo mx-auto">
                     <h6 class="text-center fw-bold mt-3 mb-4">
                         Nova conta - The Daniel´s
                     </h6>
 
                     <hr />
 
+                    @if (ViewBag.Message != "")
+                    {
+                        <div class="col-12 text-center mx-auto">
+                            <h1 class="text-danger" style="font-size: 13px">
+                                @ViewBag.Message
+                            </h1>
+                        </div>
+                    }
+
                     <div class="col-lg-6">
                         <h6 class="my-3"><i class="fa-solid fa-user me-1"></i> Informações da conta</h6>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="Name"></label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Nome" asp-for="Name">
-                            <span class="text-danger" asp-validation-for="Name"></span>
-                        </div>
-                        <div class="mb-2">
-                            <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp"
-                                   placeholder="Endereço de email" asp-for="Email">
-                            <span class="text-danger" asp-validation-for="Email"></span>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="Password">Senha</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Informe sua senha" asp-for="Password">
-                            <span class="text-danger" asp-validation-for="Password"></span>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Confirmar senha</label>
-                            <input type="password" class="form-control" name="passwordConfirmation"
-                                   placeholder="Confirme sua senha">
-                            <span class="text-danger" id="passConfirmError"></span>
+
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-12 mb-2">
+                                <label class="form-label" asp-for="Name"></label>
+                                <input type="text" class="form-control" aria-describedby="emailHelp"
+                                       placeholder="Nome" asp-for="Name">
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+
+                            <div class="col-12 mb-2">
+                                <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
+                                <input type="text" class="form-control" aria-describedby="emailHelp"
+                                       placeholder="Endereço de email" asp-for="Email">
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+
+                            <div class="col-lg-6 mb-2">
+                                <label class="form-label" asp-for="Password">Senha</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Informe sua senha" asp-for="Password">
+                                <span class="text-danger" asp-validation-for="Password"></span>
+                            </div>
+
+                            <div class="col-lg-6 mb-2">
+                                <label class="form-label">Confirmar senha</label>
+                                <input type="password" class="form-control" asp-for="PasswordConfirmation"
+                                       placeholder="Confirme sua senha">
+                                <span class="text-danger" asp-validation-for="PasswordConfirmation"></span>
+                            </div>
+
+                            <div class="col-lg-6 mb-2">
+                                <label class="form-label" asp-for="BirthDate"></label>
+                                <input type="date" class="form-control" aria-describedby="emailHelp"
+                                       placeholder="Endereço de email" asp-for="BirthDate">
+                                <span class="text-danger" asp-validation-for="BirthDate"></span>
+                            </div>
                         </div>
                     </div>
 
@@ -116,8 +138,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <button class="my-btn bg-orange radius-10 mt-2" type="submit">Criar conta</button>
+                    <div class="col-lg-12 mt-4 mx-auto">
+                        <button class="my-btn bg-orange radius-10 px-5" type="submit">Criar conta</button>
 
                         <div class="mt-4" style="font-size: 13px;">
                             <p>Já tem uma conta? <a href="/account/login">Fazer login</a></p>

@@ -25,6 +25,7 @@ namespace MySocialNetwork.Application.Services
         public void Create(UserViewModel? user)
         {
             var userEntity = _mapper?.Map<User>(user);
+            userEntity.Addresses[0].Main = true;
             _userRepositoy?.Save(userEntity);
         }
 
@@ -34,7 +35,7 @@ namespace MySocialNetwork.Application.Services
             return _mapper?.Map<UserViewModel>(userEntity);
         }
 
-        public IEnumerable<UserViewModel>? GetAll(string? searchString)
+        public List<UserViewModel>? GetAll(string? searchString)
         {
             var usersEntity = _userRepositoy?.FindAll(searchString);
             return _mapper?.Map<List<UserViewModel>>(usersEntity);
@@ -50,6 +51,12 @@ namespace MySocialNetwork.Application.Services
         {
             var userEntity = _mapper?.Map<User>(user);
             _userRepositoy?.Update(userEntity);
+        }
+
+        public UserViewModel? GetByEmail(string email)
+        {
+            var userEntity = _userRepositoy.FindByEmail(email);
+            return _mapper.Map<UserViewModel>(userEntity);
         }
     }
 }

@@ -4,13 +4,21 @@ namespace MySocialNetwork.Domain.ViewModel.Address
 {
     public class AddressViewModel
     {
+        public AddressViewModel()
+        {
+
+        }
+
         [Display(Name = "Rua")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string? Street { get; set; }
 
         [Display(Name = "Número")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string? Number { get; set; }
 
         [Display(Name = "Complemento")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string? Complement { get; set; }
 
         [Display(Name = "Cidade")]

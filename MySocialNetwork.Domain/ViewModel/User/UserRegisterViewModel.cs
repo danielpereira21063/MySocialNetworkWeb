@@ -1,11 +1,15 @@
 ﻿using MySocialNetwork.Domain.ViewModel.Address;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MySocialNetwork.Domain.ViewModel.User
 {
-    public class UserViewModel
+    public class UserRegisterViewModel
     {
-        public int Id { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Informe seu nome.")]
@@ -22,6 +26,17 @@ namespace MySocialNetwork.Domain.ViewModel.User
         [Required(ErrorMessage = "Informe sua data de nascimento.")]
         public DateTime BirthDate { get; set; }
 
-        public List<AddressViewModel> Addresses { get; set; } = new List<AddressViewModel>();
+        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "Informa uma senha.")]
+        [MinLength(8, ErrorMessage = "A senha deve ter no mínimo 8 caracteres.")]
+        public string? Password { get; set; }
+
+        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "Confirme sua senha")]
+        public string? PasswordConfirmation { get; set; }
+
+        public AddressViewModel Address { get; set; }
+
     }
+
 }

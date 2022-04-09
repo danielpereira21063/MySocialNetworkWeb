@@ -28,16 +28,37 @@ namespace MySocialNetwork.WebUI.Controllers
 
         public IActionResult Register()
         {
+            ViewBag.Message = "";
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Register(UserViewModel data, string? passwordConfirmation)
+        public IActionResult Register(UserRegisterViewModel data)
         {
+            _ValidadeUserData(data);
 
-            ValidadeUserData(data, passwordConfirmation);
+            //tratar isso de uma melhor forma
+            if (data.Password != data.PasswordConfirmation)
+            {
+                ViewBag.Message = "As senhas não iguais";
 
-            _userService?.Create(data);
+                return View(data);
+            }
+
+            var emailExists = _userService.GetByEmail(data.Email);
+
+            if (emailExists != null)
+            {
+                ViewBag.Message = "Este email já foi cadastrado";
+
+                return View(data);
+
+            }
+
+            var userVM = _UserRegisterViewModel_To_UserViewModel(data);
+
+            _userService?.Create(userVM);
 
             return Redirect($"/Account/Welcome?userName=" + data.Name);
         }
@@ -57,10 +78,23 @@ namespace MySocialNetwork.WebUI.Controllers
         }
 
 
-        private void ValidadeUserData(UserViewModel? obj, string? passwordConfirmation = "")
+        private void _ValidadeUserData(UserRegisterViewModel? obj)
         {
             DomainException.When(obj == null, "Erro ao recuperar informações dos dados enviados.");
-            DomainException.When(obj?.Password != passwordConfirmation, "As senhas não são iguais.");
+        }
+
+        private UserViewModel _UserRegisterViewModel_To_UserViewModel(UserRegisterViewModel obj)
+        {
+            var userVM = new UserViewModel()
+            {
+                Id = 0,
+                Email = obj.Email,
+                BirthDate = obj.BirthDate,
+                Name = obj.Name
+            };
+            userVM.Addresses.Add(obj.Address);
+
+            return userVM;
         }
     }
 }
