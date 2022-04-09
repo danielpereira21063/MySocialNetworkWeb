@@ -35,10 +35,12 @@ namespace MySocialNetwork.Infra.IoC
 
             services.AddScoped<IUserService, UserService>();
 
-            StartAutoMapper(services);
+            _StartAutoMapper(services);
+
+            _ConfigureIdentity();
         }
 
-        private static void StartAutoMapper(IServiceCollection services)
+        private static void _StartAutoMapper(IServiceCollection services)
         {
             var mapperConfiguration = new MapperConfiguration(config =>
             {
@@ -50,6 +52,11 @@ namespace MySocialNetwork.Infra.IoC
 
             IMapper mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
+        }
+
+        private static void _ConfigureIdentity()
+        {
+            
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Entities.UserEntities;
+using MySocialNetwork.Infra.Data.Identity;
 
 namespace MySocialNetwork.Infra.Data.Context
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
         {
