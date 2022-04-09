@@ -4,7 +4,9 @@
             addresses: {
                 states: [],
                 cities: []
-            }
+            },
+
+            genres: []
         }
     },
 
@@ -26,6 +28,8 @@
             var thisvue = this;
             var uf = $("#selectState :selected").val();
 
+            if (!uf) return;
+
             $.ajax({
                 type: "get",
                 url: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + uf + "/municipios",
@@ -33,11 +37,24 @@
                     thisvue.addresses.cities = resp;
                 }
             });
-        }
+        },
+
+        getGenres() {
+            var thisvue = this;
+
+            $.ajax({
+                type: "get",
+                url: "/Account/GetAllGenres",
+                success: function (resp) {
+                    thisvue.genres = resp;
+                }
+            });
+        },
     },
 
     created() {
         this.getStates();
+        this.getGenres();
     }
 }
 

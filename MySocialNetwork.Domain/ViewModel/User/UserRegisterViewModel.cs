@@ -1,10 +1,6 @@
-﻿using MySocialNetwork.Domain.ViewModel.Address;
-using System;
-using System.Collections.Generic;
+﻿using MySocialNetwork.Domain.Enums;
+using MySocialNetwork.Domain.ViewModel.Address;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySocialNetwork.Domain.ViewModel.User
 {
@@ -27,9 +23,13 @@ namespace MySocialNetwork.Domain.ViewModel.User
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Senha")]
-        [Required(ErrorMessage = "Informa uma senha.")]
+        [Required(ErrorMessage = "Informa uma senha")]
         [MinLength(8, ErrorMessage = "A senha deve ter no mínimo 8 caracteres.")]
         public string? Password { get; set; }
+
+        [Display(Name = "Genêro")]
+        [Required(ErrorMessage = "Informe seu genêro")]
+        public string? Genre { get; set; }
 
         [Display(Name = "Senha")]
         [Required(ErrorMessage = "Confirme sua senha")]

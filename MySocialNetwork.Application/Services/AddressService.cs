@@ -2,11 +2,6 @@
 using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Address;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySocialNetwork.Application.Services
 {
@@ -36,7 +31,7 @@ namespace MySocialNetwork.Application.Services
 
         public AddressViewModel? Find(int userId, int id)
         {
-           var address = _addressRepository?.Find(userId, id);
+            var address = _addressRepository?.Find(userId, id);
 
             return _mapper?.Map<AddressViewModel>(address);
         }

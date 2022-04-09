@@ -3,11 +3,6 @@ using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySocialNetwork.Application.Services
 {

@@ -1,10 +1,4 @@
-﻿using MySocialNetwork.Domain.Entities.UserEntities;
-using MySocialNetwork.Domain.ViewModel.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySocialNetwork.Domain.ViewModel.User;
 
 namespace MySocialNetwork.Application.Interfaces
 {

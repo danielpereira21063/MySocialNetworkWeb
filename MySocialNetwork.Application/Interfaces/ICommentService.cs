@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Domain.Entities.PostEntities;
-using MySocialNetwork.Domain.ViewModel.Comment;
+﻿using MySocialNetwork.Domain.ViewModel.Comment;
 
 namespace MySocialNetwork.Domain.Interfaces
 {

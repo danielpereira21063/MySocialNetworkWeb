@@ -1,4 +1,5 @@
-﻿using MySocialNetwork.Domain.ViewModel.Address;
+﻿using MySocialNetwork.Domain.Enums;
+using MySocialNetwork.Domain.ViewModel.Address;
 using System.ComponentModel.DataAnnotations;
 
 namespace MySocialNetwork.Domain.ViewModel.User
@@ -21,6 +22,10 @@ namespace MySocialNetwork.Domain.ViewModel.User
         [Display(Name = "Data de nascimento")]
         [Required(ErrorMessage = "Informe sua data de nascimento.")]
         public DateTime BirthDate { get; set; }
+
+        [Display(Name = "Genêro")]
+        [Required(ErrorMessage = "Informe seu genêro")]
+        public Genre? Genre { get; set; }
 
         public List<AddressViewModel> Addresses { get; set; } = new List<AddressViewModel>();
     }

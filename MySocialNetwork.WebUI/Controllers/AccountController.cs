@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySocialNetwork.Application.Interfaces;
-using MySocialNetwork.Application.Services;
-using MySocialNetwork.Domain.Interfaces;
+using MySocialNetwork.Application.Utils;
+using MySocialNetwork.Domain.Enums;
 using MySocialNetwork.Domain.Validation;
 using MySocialNetwork.Domain.ViewModel.User;
 
@@ -41,7 +41,7 @@ namespace MySocialNetwork.WebUI.Controllers
             //tratar isso de uma melhor forma
             if (data.Password != data.PasswordConfirmation)
             {
-                ViewBag.Message = "As senhas não iguais";
+                ViewBag.Message = "As senhas não são iguais";
 
                 return View(data);
             }
@@ -60,7 +60,7 @@ namespace MySocialNetwork.WebUI.Controllers
 
             _userService?.Create(userVM);
 
-            return Redirect($"/Account/Welcome?userName=" + data.Name);
+            return Redirect($"/Account/Welcome?userName={data.Name}");
         }
 
         [HttpGet("/Account/Welcome")]
@@ -77,6 +77,23 @@ namespace MySocialNetwork.WebUI.Controllers
             return View("../Account/Welcome");
         }
 
+        public IActionResult GetAllGenres()
+        {
+            var genres = new List<object>();
+            var enumGenres = ExEnum.GetCombo<Genre>();
+
+            foreach (var genre in enumGenres)
+            {
+                genres.Add(new
+                {
+                    description = genre.Key.ToString(),
+                    value = genre.Value.ToString()
+                });
+            }
+
+            return Json(genres);
+        }
+
 
         private void _ValidadeUserData(UserRegisterViewModel? obj)
         {
@@ -90,7 +107,8 @@ namespace MySocialNetwork.WebUI.Controllers
                 Id = 0,
                 Email = obj.Email,
                 BirthDate = obj.BirthDate,
-                Name = obj.Name
+                Name = obj.Name,
+                Genre = Enum.Parse<Genre>(obj.Genre)
             };
             userVM.Addresses.Add(obj.Address);
 

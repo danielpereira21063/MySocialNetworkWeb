@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Domain.Entities.UserEntities;
-using MySocialNetwork.Domain.ViewModel.Address;
+﻿using MySocialNetwork.Domain.ViewModel.Address;
 
 namespace MySocialNetwork.Domain.Interfaces
 {

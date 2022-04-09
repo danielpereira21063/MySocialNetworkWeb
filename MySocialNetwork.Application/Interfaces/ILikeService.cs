@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Domain.Entities.PostEntities;
-using MySocialNetwork.Domain.ViewModel.Like;
+﻿using MySocialNetwork.Domain.ViewModel.Like;
 
 namespace MySocialNetwork.Domain.Interfaces
 {

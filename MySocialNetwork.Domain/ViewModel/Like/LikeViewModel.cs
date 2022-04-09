@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MySocialNetwork.Domain.ViewModel.Like
+﻿namespace MySocialNetwork.Domain.ViewModel.Like
 {
     public class LikeViewModel
     {

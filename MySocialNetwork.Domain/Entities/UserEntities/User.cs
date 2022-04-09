@@ -1,4 +1,5 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
+using MySocialNetwork.Domain.Enums;
 using MySocialNetwork.Domain.Validation;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -38,6 +39,9 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         public string? Email { get; set; }
 
         public DateTime BirthDate { get; set; }
+
+        [Column(TypeName = "CHAR(1)")]
+        public Genre? Genre { get; set; }
 
 
         [Column(TypeName = "MEDIUMBLOB")]

@@ -58,6 +58,17 @@
                             </div>
 
                             <div class="col-lg-6 mb-2">
+                                <label class="form-label" asp-for="Genre"></label>
+                                <select asp-for="Genre" class=form-select>
+                                    <option value="">Selecione</option>
+                                    <option v-for="g in genres" v-bind:value="g.value">
+                                        {{g.description}}
+                                    </option>
+                                </select>
+                                <span class="text-danger"  asp-validation-for="Genre"></span>
+                            </div>
+
+                            <div class="col-lg-6 mb-2">
                                 <label class="form-label" asp-for="BirthDate"></label>
                                 <input type="date" class="form-control" aria-describedby="emailHelp"
                                        placeholder="Endereço de email" asp-for="BirthDate">
@@ -93,7 +104,7 @@
                                 <div class="mb-2">
                                     <label asp-for=Address.City></label>
                                     <select class="form-select form-select-lg" asp-for="Address.City">
-                                        <option value="">Selecione</option>
+                                        <option>Selecione</option>
                                         <option v-for="city in addresses.cities" v-bind:value="city.nome">{{city.nome}}</option>
                                     </select>
                                     <span class="text-danger" asp-validation-for="Address.City"></span>
