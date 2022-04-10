@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Domain.Enums;
-using MySocialNetwork.Domain.ViewModel.Address;
+﻿using MySocialNetwork.Domain.ViewModel.Address;
 using System.ComponentModel.DataAnnotations;
 
 namespace MySocialNetwork.Domain.ViewModel.User

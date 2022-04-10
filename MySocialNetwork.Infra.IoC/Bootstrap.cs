@@ -56,7 +56,7 @@ namespace MySocialNetwork.Infra.IoC
 
         private static void _ConfigureIdentity()
         {
-            
+
         }
     }
 }
