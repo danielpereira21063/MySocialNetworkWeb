@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Application.Services;
+using MySocialNetwork.Domain.Account;
 using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
@@ -12,6 +14,7 @@ using MySocialNetwork.Domain.ViewModel.Comment;
 using MySocialNetwork.Domain.ViewModel.Post;
 using MySocialNetwork.Domain.ViewModel.User;
 using MySocialNetwork.Infra.Data.Context;
+using MySocialNetwork.Infra.Data.Identity;
 using MySocialNetwork.Infra.Data.Repositories;
 
 namespace MySocialNetwork.Infra.IoC
@@ -26,6 +29,17 @@ namespace MySocialNetwork.Infra.IoC
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
             });
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(option =>
+                option.AccessDeniedPath = "/Account/Login"
+            );
+
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IImageRepository, ImageRepository>();
@@ -36,8 +50,6 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<IUserService, UserService>();
 
             _StartAutoMapper(services);
-
-            _ConfigureIdentity();
         }
 
         private static void _StartAutoMapper(IServiceCollection services)
@@ -52,11 +64,6 @@ namespace MySocialNetwork.Infra.IoC
 
             IMapper mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
-        }
-
-        private static void _ConfigureIdentity()
-        {
-
         }
     }
 }
