@@ -1,7 +1,7 @@
 ﻿using MySocialNetwork.Domain.ViewModel.Address;
 using System.ComponentModel.DataAnnotations;
 
-namespace MySocialNetwork.Domain.ViewModel.User
+namespace MySocialNetwork.WebUI.Models.ViewModels
 {
     public class UserRegisterViewModel
     {
@@ -35,7 +35,5 @@ namespace MySocialNetwork.Domain.ViewModel.User
         public string? PasswordConfirmation { get; set; }
 
         public AddressViewModel Address { get; set; }
-
     }
-
 }

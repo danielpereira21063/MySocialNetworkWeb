@@ -40,6 +40,7 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IImageRepository, ImageRepository>();
@@ -47,7 +48,6 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddScoped<IUserService, UserService>();
 
             _StartAutoMapper(services);
         }

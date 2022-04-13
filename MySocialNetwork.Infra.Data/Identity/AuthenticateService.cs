@@ -26,7 +26,8 @@ namespace MySocialNetwork.Infra.Data.Identity
             var applicationUser = new ApplicationUser
             {
                 UserName = email,
-                Email = email
+                Email = email,
+                NormalizedEmail = email.ToUpper()
             };
 
             var result = await _userManager.CreateAsync(applicationUser, password);
@@ -37,6 +38,7 @@ namespace MySocialNetwork.Infra.Data.Identity
             }
 
             return result.Succeeded;
+
         }
 
         public async Task Logout()
