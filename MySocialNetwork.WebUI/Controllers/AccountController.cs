@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Application.Utils;
 using MySocialNetwork.Domain.Account;
 using MySocialNetwork.Domain.Enums;
 using MySocialNetwork.Domain.Validation;
 using MySocialNetwork.Domain.ViewModel.User;
-using MySocialNetwork.Infra.Data.Identity;
 using MySocialNetwork.WebUI.Models.ViewModels;
 
 namespace MySocialNetwork.WebUI.Controllers
@@ -40,7 +38,7 @@ namespace MySocialNetwork.WebUI.Controllers
 
             if (!result)
             {
-                ModelState.AddModelError(String.Empty, "Email ou senha incorretos");
+                ModelState.AddModelError(string.Empty, "Email ou senha incorretos");
                 return View(model);
             }
 
@@ -72,32 +70,30 @@ namespace MySocialNetwork.WebUI.Controllers
                 return View(data);
             }
 
-            var emailExists = _userService.GetByEmail(data.Email);
+            bool emailExists = _userService?.GetByEmail(data.Email) != null;
 
-            if (emailExists != null)
+            if (emailExists)
             {
                 ViewBag.Message = "Este email já foi cadastrado";
 
                 return View(data);
+            }
 
+            var result = _authentication.RegisterUser(data.Email, data.Password).Result;
+
+            if (!result)
+            {
+                ViewBag.Message = "Ocorreu um erro ao registrar seu usuário!\nPor favor, entre em contato com o desenvolvedor e informe o problema.";
+                return View(data);
             }
 
             var userVM = _UserRegisterViewModel_To_UserViewModel(data);
 
             _userService?.Create(userVM);
 
-            var registeredUser = _userService.GetByEmail(data.Email);
+            var registeredUser = _userService?.GetByEmail(data.Email);
 
             if (registeredUser == null)
-            {
-                ViewBag.Message = "Ocorreu um erro ao registrar seu usuário!\nPor favor, entre em contato com o desenvolvedor e informe o problema.";
-                return View(data);
-            }
-
-
-            var result = _authentication.RegisterUser(data.Email, data.Password).Result;
-
-            if (!result)
             {
                 ViewBag.Message = "Ocorreu um erro ao registrar seu usuário!\nPor favor, entre em contato com o desenvolvedor e informe o problema.";
                 return View(data);
@@ -160,7 +156,7 @@ namespace MySocialNetwork.WebUI.Controllers
                 Name = obj.Name,
                 Genre = Enum.Parse<Genre>(obj.Genre)
             };
-            userVM.Addresses.Add(obj.Address);
+            //userVM.Addresses.Add(obj.Address);
 
             return userVM;
         }

@@ -6,9 +6,9 @@
 
 <div class="container" id="viewRegister">
     <div class="row d-flex justify-content-center vh-100">
-        <div class="col-lg-12 m-auto">
+        <div class="col-lg-8 m-auto">
             <form class="form-login d-flex flex-column" asp-controller="Account" asp-action="Register" method="post">
-                <div class="row px-3 py-4 rounded shadow bg-body">
+                <div class="row py-4 rounded shadow bg-body">
                     <img src="./../img/logo.png" alt="The Daniel´s" style="height: 50px!important;width: 70px!important;" class="logo mx-auto">
                     <h6 class="text-center fw-bold mt-3 mb-4">
                         Nova conta - The Daniel´s
@@ -25,59 +25,60 @@
                         </div>
                     }
 
-                    <div class="col-lg-6">
-                        <h6 class="my-3"><i class="fa-solid fa-user me-1"></i> Informações da conta</h6>
 
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-12 mb-2">
-                                <label class="form-label" asp-for="Name"></label>
-                                <input type="text" class="form-control" aria-describedby="emailHelp"
-                                       placeholder="Nome" asp-for="Name">
-                                <span class="text-danger" asp-validation-for="Name"></span>
-                            </div>
+                    @*<h6 class="my-3"><i class="fa-solid fa-user me-1"></i> Informações da conta</h6>*@
 
-                            <div class="col-12 mb-2">
-                                <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
-                                <input type="text" class="form-control" aria-describedby="emailHelp"
-                                       placeholder="Endereço de email" asp-for="Email">
-                                <span class="text-danger" asp-validation-for="Email"></span>
-                            </div>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-12 mb-2">
+                            <label class="form-label" asp-for="Name"></label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Nome" asp-for="Name">
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
 
-                            <div class="col-lg-6 mb-2">
-                                <label class="form-label" asp-for="Password">Senha</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                       placeholder="Informe sua senha" asp-for="Password">
-                                <span class="text-danger" asp-validation-for="Password"></span>
-                            </div>
+                        <div class="col-12 mb-2">
+                            <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Endereço de email" asp-for="Email">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
 
-                            <div class="col-lg-6 mb-2">
-                                <label class="form-label">Confirmar senha</label>
-                                <input type="password" class="form-control" asp-for="PasswordConfirmation"
-                                       placeholder="Confirme sua senha">
-                                <span class="text-danger" asp-validation-for="PasswordConfirmation"></span>
-                            </div>
+                        <div class="col-lg-6 mb-2">
+                            <label class="form-label" asp-for="Password">Senha</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Informe sua senha" asp-for="Password">
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
 
-                            <div class="col-lg-6 mb-2">
-                                <label class="form-label" asp-for="Genre"></label>
-                                <select asp-for="Genre" class=form-select>
-                                    <option value="">Selecione</option>
-                                    <option v-for="g in genres" v-bind:value="g.value">
-                                        {{g.description}}
-                                    </option>
-                                </select>
-                                <span class="text-danger"  asp-validation-for="Genre"></span>
-                            </div>
+                        <div class="col-lg-6 mb-2">
+                            <label class="form-label">Confirmar senha</label>
+                            <input type="password" class="form-control" asp-for="PasswordConfirmation"
+                                   placeholder="Confirme sua senha">
+                            <span class="text-danger" asp-validation-for="PasswordConfirmation"></span>
+                        </div>
 
-                            <div class="col-lg-6 mb-2">
-                                <label class="form-label" asp-for="BirthDate"></label>
-                                <input type="date" class="form-control" aria-describedby="emailHelp"
-                                       placeholder="Endereço de email" asp-for="BirthDate">
-                                <span class="text-danger" asp-validation-for="BirthDate"></span>
-                            </div>
+                        <div class="col-lg-6 mb-2">
+                            <label class="form-label" asp-for="Genre"></label>
+                            <select asp-for="Genre" class=form-select>
+                                <option value="">Selecione</option>
+                                <option v-for="g in genres" v-bind:value="g.value">
+                                    {{g.description}}
+                                </option>
+                            </select>
+                            <span class="text-danger" asp-validation-for="Genre"></span>
+                        </div>
+
+                        <div class="col-lg-6 mb-2">
+                            <label class="form-label" asp-for="BirthDate"></label>
+                            <input type="date" class="form-control" aria-describedby="emailHelp"
+                                   placeholder="Endereço de email" asp-for="BirthDate">
+                            <span class="text-danger" asp-validation-for="BirthDate"></span>
                         </div>
                     </div>
 
 
+
+                    @*
                     <div class="col-lg-6 mt-4 mt-lg-0">
                         <h6 class="my-3"><i class="fa-solid fa-location-dot me-1"></i> Informações da endereço</h6>
                         <div class="row">
@@ -148,6 +149,7 @@
                             </div>
                         </div>
                     </div>
+                    *@
 
                     <div class="col-lg-12 mt-4 mx-auto">
                         <button class="my-btn bg-orange radius-10 px-5" type="submit">Criar conta</button>

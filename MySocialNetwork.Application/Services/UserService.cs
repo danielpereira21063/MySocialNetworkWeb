@@ -20,7 +20,6 @@ namespace MySocialNetwork.Application.Services
         public void Create(UserViewModel? user)
         {
             var userEntity = _mapper?.Map<User>(user);
-            userEntity.Addresses[0].Main = true;
             _userRepositoy?.Save(userEntity);
         }
 

@@ -131,3 +131,11 @@ input::placeholder {
         min-height: 200px;
     }
 }
+
+.validation-summary-errors ul {
+    list-style: none;
+}
+
+.validation-summary-errors ul li {
+    padding: 0px;
+}

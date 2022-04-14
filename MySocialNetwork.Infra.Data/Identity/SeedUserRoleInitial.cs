@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MySocialNetwork.Domain.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySocialNetwork.Infra.Data.Identity
 {
@@ -32,7 +27,7 @@ namespace MySocialNetwork.Infra.Data.Identity
                 IdentityResult result = _roleManager.CreateAsync(role).Result;
             }
 
-            if(!_roleManager.RoleExistsAsync("Admin").Result)
+            if (!_roleManager.RoleExistsAsync("Admin").Result)
             {
                 IdentityRole role = new IdentityRole
                 {

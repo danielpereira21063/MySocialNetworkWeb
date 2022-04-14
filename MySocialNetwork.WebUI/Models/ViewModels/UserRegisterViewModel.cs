@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Domain.ViewModel.Address;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MySocialNetwork.WebUI.Models.ViewModels
 {
@@ -26,14 +25,15 @@ namespace MySocialNetwork.WebUI.Models.ViewModels
         [MinLength(8, ErrorMessage = "A senha deve ter no mínimo 8 caracteres.")]
         public string? Password { get; set; }
 
-        [Display(Name = "Genêro")]
-        [Required(ErrorMessage = "Informe seu genêro")]
-        public string? Genre { get; set; }
-
         [Display(Name = "Senha")]
         [Required(ErrorMessage = "Confirme sua senha")]
         public string? PasswordConfirmation { get; set; }
 
-        public AddressViewModel Address { get; set; }
+
+        [Display(Name = "Genêro")]
+        [Required(ErrorMessage = "Informe seu genêro")]
+        public string? Genre { get; set; }
+
+        //public AddressViewModel Address { get; set; }
     }
 }
