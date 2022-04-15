@@ -1,14 +1,12 @@
-﻿using MySocialNetwork.Domain.Entities.PostEntities;
+﻿using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.ViewModel.Post;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IPostService
+    public interface IPostService : IGenericService<PostViewModel>
     {
-        IEnumerable<PostViewModel>? FindAllByUserId(int userId);
-        PostViewModel? Find(int userId, int postId);
-        PostViewModel? Create(PostViewModel? post);
-        PostViewModel? Update(PostViewModel? post);
-        PostViewModel? Remove(Post? post);
+        List<PostViewModel>? GetAll(int userId);
+        PostViewModel? GetById(int userId, int postId);
     }
 }

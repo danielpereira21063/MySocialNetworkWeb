@@ -19,11 +19,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
             _context?.SaveChanges();
         }
 
-        public IEnumerable<User>? FindAll(string? searchString)
-        {
-            throw new NotImplementedException();
-        }
-
         public User? Find(int id)
         {
             throw new NotImplementedException();
@@ -42,6 +37,18 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public User? FindByEmail(string email)
         {
             return _context.Users.FirstOrDefault(x => x.Email.Equals(email));
+        }
+
+        List<User>? IUserRepository.FindAll(string? searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+            {
+                return _context.Users.ToList();
+            }
+
+            return _context.Users
+                .Where(x=> x.Name.StartsWith(searchString) || x.Email.StartsWith(searchString))
+                .ToList();
         }
     }
 }

@@ -9,6 +9,6 @@ namespace MySocialNetwork.Domain.Interfaces
         void Save(User user);
         void Update(User user);
         void Remove(User user);
-        IEnumerable<User>? FindAll(string? searchString);
+        List<User>? FindAll(string? searchString);
     }
 }

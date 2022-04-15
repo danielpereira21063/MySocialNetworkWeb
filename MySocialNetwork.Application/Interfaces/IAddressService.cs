@@ -1,13 +1,12 @@
-﻿using MySocialNetwork.Domain.ViewModel.Address;
+﻿using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.ViewModel.Address;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IAddressService
+    public interface IAddressService : IGenericService<AddressViewModel>
     {
-        AddressViewModel? Find(int userId, int id);
-        IEnumerable<AddressViewModel>? FindAllByUserId(int userId);
-        AddressViewModel? Create(AddressViewModel? address);
-        AddressViewModel? Update(AddressViewModel? address);
-        AddressViewModel? Remove(AddressViewModel? address);
+        AddressViewModel? GetById(int userId, int id);
+        List<AddressViewModel>? GetAll(int userId);
+        List<AddressViewModel>? GetAllByUserId(int userId);
     }
 }

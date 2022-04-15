@@ -21,11 +21,14 @@ namespace MySocialNetwork.WebUI.Models.ViewModels
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Senha")]
-        [Required(ErrorMessage = "Informa uma senha")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Insira uma senha")]
         [MinLength(8, ErrorMessage = "A senha deve ter no mínimo 8 caracteres.")]
         public string? Password { get; set; }
 
         [Display(Name = "Senha")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "As senhas não são iguais")]
         [Required(ErrorMessage = "Confirme sua senha")]
         public string? PasswordConfirmation { get; set; }
 

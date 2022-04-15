@@ -2,13 +2,9 @@
 
 namespace MySocialNetwork.Application.Interfaces
 {
-    public interface IUserService
+    public interface IUserService : IGenericService<UserViewModel>
     {
         List<UserViewModel>? GetAll(string? searchString);
-        UserViewModel? GetUser(int id);
         UserViewModel? GetByEmail(string email);
-        void Create(UserViewModel user);
-        void Update(UserViewModel user);
-        void Remove(UserViewModel user);
     }
 }

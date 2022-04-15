@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Infra.Data"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySocialNetwork.Infra.IoC", "MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj", "{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySocialNetwork.API", "MySocialNetwork.API\MySocialNetwork.API.csproj", "{BFC99EE5-05D4-429A-AC43-0340BB2EFC8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F9C4792-9F14-42F1-9B92-F5DA3A2C3AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC99EE5-05D4-429A-AC43-0340BB2EFC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC99EE5-05D4-429A-AC43-0340BB2EFC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC99EE5-05D4-429A-AC43-0340BB2EFC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC99EE5-05D4-429A-AC43-0340BB2EFC8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

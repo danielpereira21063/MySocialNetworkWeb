@@ -16,38 +16,44 @@ namespace MySocialNetwork.Application.Services
             _mapper = mapper;
         }
 
-        public AddressViewModel? Create(AddressViewModel? address)
+        public void Create(AddressViewModel? entity)
         {
-            var addressEntity = _mapper?.Map<Address>(address);
-            _addressRepository?.Save(addressEntity);
-            return address;
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<AddressViewModel>? FindAllByUserId(int userId)
+        public List<AddressViewModel>? GetAll(int userId)
         {
-            var addresses = _addressRepository?.FindAll(userId);
-            return _mapper?.Map<List<AddressViewModel>>(addresses);
+            throw new NotImplementedException();
         }
 
-        public AddressViewModel? Find(int userId, int id)
+        public List<AddressViewModel>? GetAll()
         {
-            var address = _addressRepository?.Find(userId, id);
-
-            return _mapper?.Map<AddressViewModel>(address);
+            throw new NotImplementedException();
         }
 
-        public AddressViewModel? Remove(AddressViewModel? address)
+        public List<AddressViewModel>? GetAllByUserId(int userId)
         {
-            var addressEntity = _mapper?.Map<Address>(address);
-            _addressRepository?.Remove(addressEntity);
-            return address;
+            throw new NotImplementedException();
         }
 
-        public AddressViewModel? Update(AddressViewModel? address)
+        public AddressViewModel? GetById(int userId, int id)
         {
-            var addressEntity = _mapper?.Map<Address>(address);
-            _addressRepository?.Update(addressEntity);
-            return address;
+            throw new NotImplementedException();
+        }
+
+        public AddressViewModel? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(AddressViewModel? entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(AddressViewModel? entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

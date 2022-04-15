@@ -1,21 +1,32 @@
-﻿using MySocialNetwork.Domain.Interfaces;
+﻿using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Image;
 
 namespace MySocialNetwork.Application.Services
 {
     public class ImageService : IImageService
     {
-        public void Create(ImageViewModel? image)
+        public void Create(ImageViewModel? entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(ImageViewModel? image)
+        public List<ImageViewModel>? GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Update(ImageViewModel? image)
+        public ImageViewModel? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(ImageViewModel? entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ImageViewModel? entity)
         {
             throw new NotImplementedException();
         }

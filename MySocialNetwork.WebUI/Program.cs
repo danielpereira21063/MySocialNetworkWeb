@@ -1,3 +1,4 @@
+using MySocialNetwork.Domain.Account;
 using MySocialNetwork.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

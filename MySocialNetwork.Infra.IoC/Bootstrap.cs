@@ -46,12 +46,20 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IImageRepository, ImageRepository>();
-            services.AddScoped<ILikeRepository, LikeRepository>();
-            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPostRepository, PostRepository>();
+
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
+            services.AddScoped<ICommentRepository, CommentRepository>();
+
+            services.AddScoped<IImageRepository, ImageRepository>();
+
+            services.AddScoped<ILikeRepository, LikeRepository>();
+
+
 
 
             _StartAutoMapper(services);

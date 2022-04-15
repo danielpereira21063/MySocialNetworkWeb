@@ -4,7 +4,7 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface ICommentRepository
     {
-        IEnumerable<Comment> FindAll(int userId, int postId);
+        List<Comment> FindAll(int userId, int postId);
         Comment? Save(Comment comment);
         Comment? Update(Comment comment);
         Comment? Remove(Comment comment);

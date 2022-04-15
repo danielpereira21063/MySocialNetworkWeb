@@ -66,7 +66,6 @@ namespace MySocialNetwork.WebUI.Controllers
             if (data.Password != data.PasswordConfirmation)
             {
                 ViewBag.Message = "As senhas não são iguais";
-
                 return View(data);
             }
 
@@ -75,7 +74,6 @@ namespace MySocialNetwork.WebUI.Controllers
             if (emailExists)
             {
                 ViewBag.Message = "Este email já foi cadastrado";
-
                 return View(data);
             }
 
@@ -87,13 +85,13 @@ namespace MySocialNetwork.WebUI.Controllers
                 return View(data);
             }
 
-            var userVM = _UserRegisterViewModel_To_UserViewModel(data);
+            var newUserViewModel = _UserRegisterViewModel_To_UserViewModel(data);
 
-            _userService?.Create(userVM);
+            _userService?.Create(newUserViewModel);
 
-            var registeredUser = _userService?.GetByEmail(data.Email);
+            bool registeredUser = _userService?.GetByEmail(data.Email) != null;
 
-            if (registeredUser == null)
+            if (registeredUser)
             {
                 ViewBag.Message = "Ocorreu um erro ao registrar seu usuário!\nPor favor, entre em contato com o desenvolvedor e informe o problema.";
                 return View(data);

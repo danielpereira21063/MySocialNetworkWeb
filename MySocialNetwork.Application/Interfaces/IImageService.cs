@@ -1,11 +1,9 @@
-﻿using MySocialNetwork.Domain.ViewModel.Image;
+﻿using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.ViewModel.Image;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IImageService
+    public interface IImageService : IGenericService<ImageViewModel>
     {
-        void Create(ImageViewModel? image);
-        void Update(ImageViewModel? image);
-        void Remove(ImageViewModel? image);
     }
 }

@@ -5,24 +5,32 @@ namespace MySocialNetwork.Application.Services
 {
     public class CommentService : ICommentService
     {
-
-
-        public CommentViewModel? Create(CommentViewModel comment)
+        public void Create(CommentViewModel? entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CommentViewModel> FindAll(int userId, int postId)
+        public List<CommentViewModel> GetAll(int userId, int postId)
         {
             throw new NotImplementedException();
         }
 
-        public CommentViewModel? Remove(CommentViewModel comment)
+        public List<CommentViewModel>? GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public CommentViewModel? Update(CommentViewModel comment)
+        public CommentViewModel? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(CommentViewModel? entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(CommentViewModel? entity)
         {
             throw new NotImplementedException();
         }

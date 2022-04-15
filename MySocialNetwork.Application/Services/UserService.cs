@@ -23,12 +23,6 @@ namespace MySocialNetwork.Application.Services
             _userRepositoy?.Save(userEntity);
         }
 
-        public UserViewModel? GetUser(int id)
-        {
-            var userEntity = _userRepositoy?.Find(id);
-            return _mapper?.Map<UserViewModel>(userEntity);
-        }
-
         public List<UserViewModel>? GetAll(string? searchString)
         {
             var usersEntity = _userRepositoy?.FindAll(searchString);
@@ -51,6 +45,17 @@ namespace MySocialNetwork.Application.Services
         {
             var userEntity = _userRepositoy.FindByEmail(email);
             return _mapper.Map<UserViewModel>(userEntity);
+        }
+
+        public UserViewModel? GetById(int id)
+        {
+            var userEntity = _userRepositoy?.Find(id);
+            return _mapper?.Map<UserViewModel>(userEntity);
+        }
+
+        public List<UserViewModel>? GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

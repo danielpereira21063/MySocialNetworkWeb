@@ -5,22 +5,32 @@ namespace MySocialNetwork.Application.Services
 {
     public class LikeService : ILikeService
     {
-        public LikeViewModel? Create(LikeViewModel? like)
+        public void Create(LikeViewModel? entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<LikeViewModel>? FindAll(int userId, int postId)
+        public List<LikeViewModel>? GetAll(int userId, int postId)
         {
             throw new NotImplementedException();
         }
 
-        public LikeViewModel? Remove(LikeViewModel? like)
+        public List<LikeViewModel>? GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public LikeViewModel? Update(LikeViewModel? like)
+        public LikeViewModel? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(LikeViewModel? entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(LikeViewModel? entity)
         {
             throw new NotImplementedException();
         }

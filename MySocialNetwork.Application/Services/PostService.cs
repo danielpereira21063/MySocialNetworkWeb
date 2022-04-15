@@ -6,27 +6,37 @@ namespace MySocialNetwork.Application.Services
 {
     public class PostService : IPostService
     {
-        public PostViewModel? Create(PostViewModel? post)
+        public void Create(PostViewModel? entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PostViewModel>? FindAllByUserId(int userId)
+        public List<PostViewModel>? GetAll(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public PostViewModel? Find(int userId, int postId)
+        public List<PostViewModel>? GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public PostViewModel? Remove(Post? post)
+        public PostViewModel? GetById(int userId, int postId)
         {
             throw new NotImplementedException();
         }
 
-        public PostViewModel? Update(PostViewModel? post)
+        public PostViewModel? GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(PostViewModel? entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(PostViewModel? entity)
         {
             throw new NotImplementedException();
         }

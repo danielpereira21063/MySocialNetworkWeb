@@ -1,12 +1,10 @@
-﻿using MySocialNetwork.Domain.ViewModel.Like;
+﻿using MySocialNetwork.Application.Interfaces;
+using MySocialNetwork.Domain.ViewModel.Like;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface ILikeService
+    public interface ILikeService : IGenericService<LikeViewModel>
     {
-        IEnumerable<LikeViewModel>? FindAll(int userId, int postId);
-        LikeViewModel? Create(LikeViewModel? like);
-        LikeViewModel? Update(LikeViewModel? like);
-        LikeViewModel? Remove(LikeViewModel? like);
+        List<LikeViewModel>? GetAll(int userId, int postId);
     }
 }

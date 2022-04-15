@@ -133,9 +133,9 @@ input::placeholder {
 }
 
 .validation-summary-errors ul {
-    list-style: none;
+    list-style: none !important;
 }
 
 .validation-summary-errors ul li {
-    padding: 0px;
+    padding: 0px !important;
 }
