@@ -14,6 +14,16 @@ namespace MySocialNetwork.WebUI.Controllers
             _userService = userService;
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Account()
+        {
+            return View();
+        }
+
         [HttpGet("/User/GetLogged")]
         public IActionResult GetLoggedUser()
         {

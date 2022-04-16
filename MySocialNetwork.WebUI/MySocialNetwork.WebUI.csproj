@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\icons\calendar.svg" />
     <Content Remove="wwwroot\img\icons\caret-down-fill.svg" />
   </ItemGroup>
 
@@ -23,11 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\img\icons\calendar.svg" />
     <None Include="wwwroot\img\icons\caret-down-fill.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ts\" />
     <Folder Include="wwwroot\ts\" />
   </ItemGroup>
 

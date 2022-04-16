@@ -2,5 +2,6 @@
 {
     public class ImageViewModel
     {
+        public string? File {get;set;}
     }
 }

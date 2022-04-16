@@ -39,8 +39,8 @@ select,
 select:focus,
 textarea,
 textarea:focus {
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
     font-size: 13px !important;
 }
 
@@ -65,6 +65,12 @@ textarea:focus {
 .form-control:focus {
     border: none !important;
 }
+
+/*input[type="date"].form-control {
+    background-image: url("/img/icons/calendar.svg") !important;
+    font-size: 1rem;
+}
+*/
 
 input,
 input::placeholder {
@@ -103,7 +109,7 @@ input::placeholder {
 }
 
 .actions button i {
-    font-size: 16px !important;
+    font-size: 20px !important;
 }
 
 
@@ -134,8 +140,28 @@ input::placeholder {
 
 .validation-summary-errors ul {
     list-style: none !important;
+    padding: 0px !important;
+    margin: 0;
 }
 
-.validation-summary-errors ul li {
-    padding: 0px !important;
+    .validation-summary-errors ul li {
+        padding: 0px !important;
+        text-align: center;
+        color: var(--bs-red);
+    }
+
+.form-search {
+    width: 400px;
+}
+
+button, .btn {
+    font-size: 13px !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.form-label {
+    font-size: 13px;
 }

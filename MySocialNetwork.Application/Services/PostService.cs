@@ -1,4 +1,5 @@
-﻿using MySocialNetwork.Domain.Entities.PostEntities;
+﻿using AutoMapper;
+using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Post;
 
@@ -6,9 +7,20 @@ namespace MySocialNetwork.Application.Services
 {
     public class PostService : IPostService
     {
+        private readonly IMapper _mapper;
+        private readonly IPostRepository _postRepository;
+
+        public PostService(IMapper mapper, IPostRepository postRepository)
+        {
+            _mapper = mapper;
+            _postRepository = postRepository;
+        }
+
         public void Create(PostViewModel? entity)
         {
-            throw new NotImplementedException();
+            var post = _mapper.Map<Post>(entity);
+
+            _postRepository.Save(post);
         }
 
         public List<PostViewModel>? GetAll(int userId)

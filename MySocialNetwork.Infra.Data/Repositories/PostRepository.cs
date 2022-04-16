@@ -1,13 +1,22 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Interfaces;
+using MySocialNetwork.Infra.Data.Context;
 
 namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class PostRepository : IPostRepository
     {
+        private readonly ApplicationDbContext _context;
+
+        public PostRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public Post? Save(Post post)
         {
-            throw new NotImplementedException();
+            _context.Add(post);
+            return post;
         }
 
         public IEnumerable<Post>? FindAll(int userId)

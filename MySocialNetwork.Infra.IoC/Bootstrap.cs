@@ -59,9 +59,6 @@ namespace MySocialNetwork.Infra.IoC
 
             services.AddScoped<ILikeRepository, LikeRepository>();
 
-
-
-
             _StartAutoMapper(services);
         }
 

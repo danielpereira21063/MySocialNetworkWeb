@@ -1,61 +1,30 @@
-const appRegister = {
+var httpRequest = new XMLHttpRequest;
+const AppRegister = {
     data() {
         return {
-            addresses: {
-                states: [],
-                cities: []
-            },
-
-            genres: []
-        }
+            Addresses: {
+                States: [],
+                Cities: []
+            }
+        };
     },
-
     methods: {
         getStates() {
-            var thisvue = this;
-
-            $.ajax({
-                type: "get",
-                url: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/",
-                success: function (resp) {
-                    thisvue.addresses.states = resp;
-                    console.log(resp)
+            const thisvue = AppRegister.data();
+            const url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/";
+            httpRequest.open("GET", url);
+            httpRequest.onreadystatechange = () => {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    let response = JSON.parse(httpRequest.responseText);
+                    thisvue.Addresses.States = response;
                 }
-            });
-        },
-
-        getCities() {
-            var thisvue = this;
-            var uf = $("#selectState :selected").val();
-
-            if (!uf) return;
-
-            $.ajax({
-                type: "get",
-                url: "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + uf + "/municipios",
-                success: function (resp) {
-                    thisvue.addresses.cities = resp;
-                }
-            });
-        },
-
-        getGenres() {
-            var thisvue = this;
-
-            $.ajax({
-                type: "get",
-                url: "/Account/GetAllGenres",
-                success: function (resp) {
-                    thisvue.genres = resp;
-                }
-            });
+            };
+            httpRequest.send();
         },
     },
-
-    created() {
-        this.getStates();
-        this.getGenres();
-    }
-}
-
-Vue.createApp(appRegister).mount("#viewRegister");
+    mounted() {
+        //this.getStates();
+    },
+    watch: {}
+};
+Vue.createApp(AppRegister).mount("#viewRegister");

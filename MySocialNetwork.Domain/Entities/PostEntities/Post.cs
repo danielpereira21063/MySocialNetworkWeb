@@ -7,6 +7,11 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
     [Table("Posts")]
     public sealed class Post : AbstractEntity
     {
+
+        public Post()
+        {
+
+        }
         public Post(int userId, string? subtitle, List<Image>? images)
         {
             ValidateDomain();
@@ -23,7 +28,7 @@ namespace MySocialNetwork.Domain.Entities.PostEntities
         }
 
         [Column(TypeName = "TEXT")]
-        public string? Subtitle { get; private set; }
+        public string? Subtitle { get; set; }
 
         [Column(TypeName = "INT UNSIGNED")]
         public int UserId { get; set; }

@@ -1,0 +1,29 @@
+﻿<div class="modal fade" tabindex="-1" id="modalNewPost">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Nova publicação</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="file-1" class="form-label actions pointer">
+                        <button><i class="bi bi-plus-square"></i></button>
+                        Selecionar imagem
+                    </label>
+                    <input type="file" class="d-none" id="file-1" onchange="loadImage(event)" />
+                    <img src="" class="d-none img-thumbnail post-images" id="imgFile-1" />
+                </div>
+                <div class="form-group">
+                    <label clas="mb-2">Título</label>
+                    <textarea v-model="PostViewModel.subtitle" class="form-control form-control-sm" placeholder="Título da publicação"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary py-2 rounded-2" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="my-btn bg-orange py-2 rounded-2" v-on:click="postPost()">Publicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Vue/Post/NewPost.js"></script>

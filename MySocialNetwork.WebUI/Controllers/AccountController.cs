@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Application.Utils;
 using MySocialNetwork.Domain.Account;
@@ -20,9 +22,10 @@ namespace MySocialNetwork.WebUI.Controllers
             _authentication = authenticate;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
-            return RedirectToAction(nameof(Login));
+            return View();
         }
 
         [HttpGet]
@@ -53,6 +56,9 @@ namespace MySocialNetwork.WebUI.Controllers
         public IActionResult Register()
         {
             ViewBag.Message = "";
+            var genres = GetAllGenres();
+
+            ViewBag.Genres = new SelectList(genres, "value", "description");
 
             return View();
         }
@@ -89,9 +95,9 @@ namespace MySocialNetwork.WebUI.Controllers
 
             _userService?.Create(newUserViewModel);
 
-            bool registeredUser = _userService?.GetByEmail(data.Email) != null;
+            bool userHasBeenRegistered = _userService?.GetByEmail(data.Email) != null;
 
-            if (registeredUser)
+            if (!userHasBeenRegistered)
             {
                 ViewBag.Message = "Ocorreu um erro ao registrar seu usuário!\nPor favor, entre em contato com o desenvolvedor e informe o problema.";
                 return View(data);
@@ -121,7 +127,7 @@ namespace MySocialNetwork.WebUI.Controllers
             return View("../Account/Welcome");
         }
 
-        public IActionResult GetAllGenres()
+        public List<object> GetAllGenres()
         {
             var genres = new List<object>();
             var enumGenres = ExEnum.GetCombo<Genre>();
@@ -135,9 +141,8 @@ namespace MySocialNetwork.WebUI.Controllers
                 });
             }
 
-            return Json(genres);
+            return genres;
         }
-
 
         private void _ValidadeUserData(UserRegisterViewModel? obj)
         {
