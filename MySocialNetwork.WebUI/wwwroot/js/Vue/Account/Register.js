@@ -10,7 +10,7 @@ const AppRegister = {
     },
     methods: {
         getStates() {
-            const thisvue = AppRegister.data();
+            const thisvue = this;
             const url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/";
             httpRequest.open("GET", url);
             httpRequest.onreadystatechange = () => {

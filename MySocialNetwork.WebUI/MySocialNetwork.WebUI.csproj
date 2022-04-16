@@ -28,8 +28,4 @@
     <None Include="wwwroot\img\icons\caret-down-fill.svg" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\ts\" />
-  </ItemGroup>
-
 </Project>

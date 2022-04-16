@@ -38,10 +38,10 @@ namespace MySocialNetwork.WebUI.Controllers
 
             _postService.Create(postViewModel);
 
-            return View();
+            return Ok();
         }
 
-        private static PostViewModel _NewPostViewModelToPostViewModel(NewPostViewModel model)
+        private PostViewModel _NewPostViewModelToPostViewModel(NewPostViewModel model)
         {
             var postViewModel = new PostViewModel
             {
@@ -54,7 +54,7 @@ namespace MySocialNetwork.WebUI.Controllers
             {
                 postViewModel.Images.Add(new ImageViewModel
                 {
-                    File = img.File
+                    File = Convert.FromBase64String(img.File)
                 });
             }
 

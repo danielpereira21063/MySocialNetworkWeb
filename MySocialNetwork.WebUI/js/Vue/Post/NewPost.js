@@ -10,12 +10,14 @@ const AppNewPost = {
     },
     methods: {
         postPost() {
+            this.PostViewModel.Images = [];
             const formats = ["jpg", "jpeg", "png"];
             let images = document.querySelectorAll(".post-images");
             images.forEach((img, idx) => {
                 formats.forEach((format) => {
-                    if (img.src.includes(`data:image/${format};`) && img.src != img.src[idx - 1]) {
-                        var src = img.src.replace(`data:image/${format};`, "");
+                    let base64Info = `data:image/${format};base64,`;
+                    if (img.src.includes(base64Info) && img.src != img.src[idx - 1]) {
+                        let src = img.src.replace(base64Info, "");
                         this.PostViewModel.Images.push({
                             file: src
                         });
@@ -26,9 +28,7 @@ const AppNewPost = {
             httpRequest.open("POST", url);
             httpRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             httpRequest.onreadystatechange = () => {
-                if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
-                    console.log(httpRequest.responseText);
-                }
+                console.log(httpRequest);
             };
             var data = JSON.stringify(this.PostViewModel);
             httpRequest.send(data);
