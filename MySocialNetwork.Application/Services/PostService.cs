@@ -20,6 +20,9 @@ namespace MySocialNetwork.Application.Services
         {
             var post = _mapper.Map<Post>(entity);
 
+            //post.Images = _mapper.Map<List<Image>>(entity.Images);
+            //post.User = _mapper.Map<User>(entity.User);
+
             _postRepository.Save(post);
         }
 
@@ -30,7 +33,8 @@ namespace MySocialNetwork.Application.Services
 
         public List<PostViewModel>? GetAll()
         {
-            throw new NotImplementedException();
+            var posts = _postRepository.FindAll();
+            return _mapper.Map<List<PostViewModel>>(posts);
         }
 
         public PostViewModel? GetById(int userId, int postId)

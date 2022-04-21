@@ -1,5 +1,4 @@
-﻿using MySocialNetwork.Application.Interfaces;
-using MySocialNetwork.Domain.Interfaces;
+﻿using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Image;
 
 namespace MySocialNetwork.Application.Services

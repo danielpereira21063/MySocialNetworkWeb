@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MySocialNetwork.Application.Interfaces
+﻿namespace MySocialNetwork.Application.Interfaces
 {
     public interface IGenericService<Entity>
     {

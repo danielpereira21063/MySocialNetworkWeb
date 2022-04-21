@@ -21,7 +21,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 
         public User? Find(int id)
         {
-            throw new NotImplementedException();
+            return _context.Users.FirstOrDefault(x=>x.Id.Equals(id));
         }
 
         public void Remove(User? user)
@@ -47,7 +47,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
             }
 
             return _context.Users
-                .Where(x=> x.Name.StartsWith(searchString) || x.Email.StartsWith(searchString))
+                .Where(x => x.Name.StartsWith(searchString) || x.Email.StartsWith(searchString))
                 .ToList();
         }
     }

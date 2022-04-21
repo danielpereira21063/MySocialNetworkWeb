@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MySocialNetwork.Domain.Entities.UserEntities
 {
     [Table("Users")]
-    public sealed class User : AbstractEntity
+    public class User : AbstractEntity
     {
         public User()
         {
@@ -49,7 +49,7 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
 
         public List<Comment>? Comments { get; set; }
         public List<Like>? Likes { get; set; }
-        public List<Address>? Addresses { get; set; } = new List<Address>();
+        public List<Address>? Addresses { get; set; }
         public List<Post>? Posts { get; set; }
 
         private void ValidateDomain()

@@ -1,5 +1,6 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Entities.UserEntities;
+using MySocialNetwork.Domain.Enums;
 
 namespace MySocialNetwork.Infra.Data.Context
 {
@@ -26,6 +27,54 @@ namespace MySocialNetwork.Infra.Data.Context
             var address = new List<Address>();
             var likes = new List<Like>();
             var images = new List<Image>();
+
+            users.Add(new User
+            {
+                Name = "Daniel Pereira Sanches",
+                Email = "daniel@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("M"),
+            });
+
+            users.Add(new User
+            {
+                Name = "Vanessa Pereira Sanches",
+                Email = "vanessa@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("F"),
+            });
+
+            users.Add(new User
+            {
+                Name = "Maria de Oliveira",
+                Email = "maria@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("F"),
+            });
+
+            users.Add(new User
+            {
+                Name = "Ferando da Silva",
+                Email = "fernando@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("M"),
+            });
+
+            users.Add(new User
+            {
+                Name = "João Matheus",
+                Email = "joao@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("M"),
+            });
+
+            users.Add(new User
+            {
+                Name = "Filipe Moreira",
+                Email = "filipe@email.com",
+                BirthDate = DateTime.Now,
+                Genre = Enum.Parse<Genre>("M"),
+            });
         }
     }
 }

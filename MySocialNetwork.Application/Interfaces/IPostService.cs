@@ -1,5 +1,4 @@
 ﻿using MySocialNetwork.Application.Interfaces;
-using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.ViewModel.Post;
 
 namespace MySocialNetwork.Domain.Interfaces

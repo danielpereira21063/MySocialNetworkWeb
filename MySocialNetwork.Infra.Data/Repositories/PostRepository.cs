@@ -1,4 +1,5 @@
-﻿using MySocialNetwork.Domain.Entities.PostEntities;
+﻿using Microsoft.EntityFrameworkCore;
+using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Infra.Data.Context;
 
@@ -15,11 +16,12 @@ namespace MySocialNetwork.Infra.Data.Repositories
 
         public Post? Save(Post post)
         {
-            _context.Add(post);
+            _context.Posts.Add(post);
+            _context.SaveChanges();
             return post;
         }
 
-        public IEnumerable<Post>? FindAll(int userId)
+        public List<Post>? FindAll(int userId)
         {
             throw new NotImplementedException();
         }
@@ -37,6 +39,16 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Post? Update(Post post)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Post>? FindAll()
+        {
+            return _context.Posts
+                .Include(x => x.User)
+                .Include(x => x.Images)
+                .Include(x => x.Likes)
+                .Include(x => x.Comments)
+                .OrderByDescending(x => x.CreatedAt).Take(24).ToList();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Address;
 

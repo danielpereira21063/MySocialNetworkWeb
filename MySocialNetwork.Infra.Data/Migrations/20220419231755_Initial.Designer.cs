@@ -11,8 +11,8 @@ using MySocialNetwork.Infra.Data.Context;
 namespace MySocialNetwork.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220409152508_AddIdentityTables")]
-    partial class AddIdentityTables
+    [Migration("20220419231755_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -158,17 +158,16 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("PostId")
+                    b.Property<uint?>("PostId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.Property<string>("Text")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("UserId")
+                    b.Property<uint?>("UserId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.HasKey("Id");
@@ -190,10 +189,9 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<byte[]>("File")
-                        .IsRequired()
                         .HasColumnType("MEDIUMBLOB");
 
-                    b.Property<uint>("PostId")
+                    b.Property<uint?>("PostId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -218,13 +216,13 @@ namespace MySocialNetwork.Infra.Data.Migrations
                     b.Property<bool>("IsLiked")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<uint>("PostId")
+                    b.Property<uint?>("PostId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("UserId")
+                    b.Property<uint?>("UserId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.HasKey("Id");
@@ -246,7 +244,6 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Subtitle")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -269,11 +266,9 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .HasColumnType("INT UNSIGNED");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Complement")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -286,25 +281,21 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Number")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(10)");
 
                     b.Property<string>("PostalCode")
-                        .IsRequired()
                         .HasColumnType("CHAR(8)");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("CHAR(2)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("UserId")
+                    b.Property<uint?>("UserId")
                         .HasColumnType("INT UNSIGNED");
 
                     b.HasKey("Id");
@@ -327,14 +318,12 @@ namespace MySocialNetwork.Infra.Data.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(250)");
 
                     b.Property<string>("Genre")
                         .HasColumnType("CHAR(1)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("VARCHAR(250)");
 
                     b.Property<byte[]>("ProfilePicture")
@@ -467,15 +456,11 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 {
                     b.HasOne("MySocialNetwork.Domain.Entities.PostEntities.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Post");
 
@@ -486,9 +471,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 {
                     b.HasOne("MySocialNetwork.Domain.Entities.PostEntities.Post", "Post")
                         .WithMany("Images")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.Navigation("Post");
                 });
@@ -497,15 +480,11 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 {
                     b.HasOne("MySocialNetwork.Domain.Entities.PostEntities.Post", "Post")
                         .WithMany("Likes")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "User")
                         .WithMany("Likes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Post");
 
@@ -527,9 +506,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 {
                     b.HasOne("MySocialNetwork.Domain.Entities.UserEntities.User", "User")
                         .WithMany("Addresses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

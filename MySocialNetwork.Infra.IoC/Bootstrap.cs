@@ -11,6 +11,8 @@ using MySocialNetwork.Domain.Entities.UserEntities;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Address;
 using MySocialNetwork.Domain.ViewModel.Comment;
+using MySocialNetwork.Domain.ViewModel.Image;
+using MySocialNetwork.Domain.ViewModel.Like;
 using MySocialNetwork.Domain.ViewModel.Post;
 using MySocialNetwork.Domain.ViewModel.User;
 using MySocialNetwork.Infra.Data.Context;
@@ -19,14 +21,15 @@ using MySocialNetwork.Infra.Data.Repositories;
 
 namespace MySocialNetwork.Infra.IoC
 {
-    public static class Bootstrap
+    public class Bootstrap
     {
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), b => b
+                .MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -66,10 +69,12 @@ namespace MySocialNetwork.Infra.IoC
         {
             var mapperConfiguration = new MapperConfiguration(config =>
             {
-                config.CreateMap<User, UserViewModel>().ReverseMap();
                 config.CreateMap<Address, AddressViewModel>().ReverseMap();
-                config.CreateMap<Post, PostViewModel>().ReverseMap();
                 config.CreateMap<Comment, CommentViewModel>().ReverseMap();
+                config.CreateMap<Image, ImageViewModel>().ReverseMap();
+                config.CreateMap<Like, LikeViewModel>().ReverseMap();
+                config.CreateMap<Post, PostViewModel>().ReverseMap();
+                config.CreateMap<User, UserViewModel>().ReverseMap();
             });
 
             IMapper mapper = mapperConfiguration.CreateMapper();

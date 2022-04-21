@@ -4,18 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MySocialNetwork.Domain.Entities.UserEntities
 {
     [Table("Addresses")]
-    public sealed class Address : AbstractEntity
+    public class Address : AbstractEntity
     {
         public Address()
         {
 
         }
 
-        public Address(int userId, string? street, string? number, string? complement, string? city, string? state, string? postalCode, string? district)
+        public Address(string? street, string? number, string? complement, string? city, string? state, string? postalCode, string? district)
         {
             ValidateDomain();
-
-            UserId = userId;
             Street = street;
             Number = number;
             Complement = complement;
@@ -51,16 +49,12 @@ namespace MySocialNetwork.Domain.Entities.UserEntities
         [Column(TypeName = "VARCHAR(32)")]
         public string? District { get; set; }
 
-        [Column(TypeName = "INT UNSIGNED")]
-        public int UserId { get; set; }
-
         public User? User { get; set; }
 
         public bool Main { get; set; }
 
         private void ValidateDomain()
         {
-            DomainException.When(UserId < 0, "Usuário não informado.");
             DomainException.When(PostalCode?.Length == 8, "CEP é um campo obrigatório.");
             DomainException.When(City?.Length == 0, "Cidade é um campo obrigatório.");
             DomainException.When(Number?.Length == 0, "Número é um campo obrigatório.");
