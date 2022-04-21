@@ -1,7 +1,6 @@
 const loadImage = function (event) {
     var input = event.target;
     var reader = new FileReader();
-    console.log(event);
     reader.onload = () => {
         var dataUrl = reader.result;
         var output = document.getElementById('imgFile-1');
@@ -18,4 +17,8 @@ const _base64ToArrayBuffer = (base64) => {
         bytes[i] = binary_string.charCodeAt(i);
     }
     return bytes.buffer;
+};
+const loadDefaultPostImage = (element) => {
+    element.src = "/img/post-image-default.png";
+    element.onerror = null;
 };

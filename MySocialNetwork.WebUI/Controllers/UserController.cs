@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MySocialNetwork.Application.Interfaces;
-using MySocialNetwork.Application.Utils;
 using MySocialNetwork.Domain.Enums;
 
 namespace MySocialNetwork.WebUI.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -22,6 +23,26 @@ namespace MySocialNetwork.WebUI.Controllers
         public IActionResult Account()
         {
             return View();
+        }
+
+        [HttpGet("/User/Profile/{userId}")]
+        public IActionResult Profile(int userId)
+        {
+            var user = _userService.GetById(userId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        public IActionResult GetUserProfileById(int userId)
+        {
+            var user = _userService.GetById(userId);
+
+            return Json(user);
         }
 
         [HttpGet("/User/GetLogged")]

@@ -2,141 +2,63 @@
     Layout = "_Layout";
 }
 
-<div class="row">
-    <div class="col-lg-6 d-flex justify-content-center mx-auto">
-        <div class="actions">
-            <button data-bs-toggle="modal" data-bs-target="#modalNewPost"><i class="bi bi-plus-square"></i></button>
+<div id="ViewIndex">
+    <div class="row">
+        <div class="col-lg-6 d-flex justify-content-center mx-auto">
+            <div class="actions">
+                <button data-bs-toggle="modal" data-bs-target="#modalNewPost"><i class="bi bi-plus-square"></i></button>
+            </div>
         </div>
     </div>
+
+    <div class="row mt-3 d-none" id="postSuccess">
+        <div class="col-12 alert alert-success text-center p-3">
+            <span style="font-size: 13px;">Publicado com sucesso!</span>
+        </div>
+    </div>
+
+    <div class="row mt-3 px-2" id="listPosts">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-0 p-sm-2 d-flex" v-for="post in postsViewModel">
+            <div class="publication p-0">
+                <div class="p-2 px-lg-2">
+                    <a class="username" v-bind:href="`/User/Profile/${post.user.id}`">
+                        <img src="/users/profiles/0/daniel.png" onerror="loadDefaultPostImage(this)" class="profile radius-100" />
+                        {{post.user.name.split(" ")[0]}}
+                    </a>
+                </div>
+                <div class="card">
+                    <div v-on:click="redirectToSeePost(post.id)" class="pointer">
+                        <div v-if="post.images.length > 0">
+                            <img v-for="img in post.images" v-bind:src="`data:image/jpg;base64,${img.file}`" class="card-img-top img-publication" alt="...">
+                        </div>
+                        <div v-else style="height: 235px; width: 100%" class="d-flex align-items-center bg-secondary">
+                            <h4 class="px-3"
+                                v-bind:class="{'font-20px': post.subtitle.length < 60, 'font-17px': post.subtitle.length >= 60,'font-15px': post.subtitle.length >= 80}">
+                                {{post.subtitle}}
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-body px-2">
+                        <span class="qty-likes fw-bold mb-3 d-block">{{post.likes.length}} curtida{{post.likes.length != 1 ? 's' : ''}}</span>
+                        <div class="actions mb-2">
+                            <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
+                            <button class="comment mx-1"><i class="bi bi-chat"></i></button>
+                            <button class="share"><i class="bi bi-share"></i></button>
+                        </div>
+                        <p class="description" v-show="post.images.length > 0">
+                            {{post.subtitle}}
+                        </p>
+
+                        <div class="d-inline">
+                            <small class="date text-muted fw-bold" style="font-size: 10px">{{post.createdAt}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <partial name="../Modals/_ModalNewPost.cshtml"></partial>
 </div>
 
-<div class="row mt-3">
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-0 p-sm-2">
-        <div class="publication p-0">
-            <div class="p-2 px-lg-2">
-                <a class="username" href="/">
-                    <img src="~/users/profiles/0/daniel.png" class="profile radius-100" />
-                    Daniel Sanches
-                </a>
-            </div>
-            <div class="card">
-                <img src="~/users/publications/0/grand-canal-veneza.jpg" class="card-img-top img-publication" alt="...">
-                <div class="card-body px-2">
-                    <span class="qty-likes fw-bold mb-3 d-block">38 curtidas</span>
-                    <div class="actions mb-2">
-                        <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
-                        <button class="comment mx-1"><i class="bi bi-chat"></i></button>
-                        <button class="share"><i class="bi bi-share"></i></button>
-                    </div>
-                    <p class="description">
-                        Hoje foi dia de conhecer esse lugar maravilhoso,
-                        Embalse el Yeso, e ficamos apaixonados!
-                        💙 Nós fomos com a minha família e recomendamos muito! 😍🗻💙!
-                    </p>
-
-                    <div class="d-inline">
-                        <small class="date text-muted fw-bold" style="font-size: 10px">23-01-2022 às 17:43</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-0 p-sm-2">
-        <div class="publication p-0">
-            <div class="p-2 px-lg-2">
-                <a class="username" href="/">
-                    <img src="~/users/profiles/0/daniel.png" class="profile radius-100" />
-                    Daniel Sanches
-                </a>
-            </div>
-            <div class="card">
-                <img src="~/users/publications/0/group-old-healthy.jpg" class="card-img-top img-publication" alt="...">
-                <div class="card-body px-2">
-                    <span class="qty-likes fw-bold mb-3 d-block">38 curtidas</span>
-                    <div class="actions mb-2">
-                        <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
-                        <button class="comment mx-1"><i class="bi bi-chat"></i></button>
-                        <button class="share"><i class="bi bi-share"></i></button>
-                    </div>
-                    <p class="description">
-                        Hoje foi dia de conhecer esse lugar maravilhoso,
-                        Embalse el Yeso, e ficamos apaixonados!
-                        💙 Nós fomos com a minha família e recomendamos muito! 😍🗻💙!
-                    </p>
-
-                    <div class="d-inline">
-                        <small class="date text-muted fw-bold" style="font-size: 10px">23-01-2022 às 17:43</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-0 p-sm-2">
-        <div class="publication p-0">
-            <div class="p-2 px-lg-2">
-                <a class="username" href="/">
-                    <img src="~/users/profiles/0/daniel.png" class="profile radius-100" />
-                    Daniel Sanches
-                </a>
-            </div>
-            <div class="card">
-                <img src="~/users/publications/0/istockphoto.jpg" class="card-img-top img-publication" alt="...">
-                <div class="card-body px-2">
-                    <span class="qty-likes fw-bold mb-3 d-block">38 curtidas</span>
-                    <div class="actions mb-2">
-                        <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
-                        <button class="comment mx-1"><i class="bi bi-chat"></i></button>
-                        <button class="share"><i class="bi bi-share"></i></button>
-                    </div>
-                    <p class="description">
-                        Hoje foi dia de conhecer esse lugar maravilhoso,
-                        Embalse el Yeso, e ficamos apaixonados!
-                        💙 Nós fomos com a minha família e recomendamos muito! 😍🗻💙!
-                    </p>
-
-                    <div class="d-inline">
-                        <small class="date text-muted fw-bold" style="font-size: 10px">23-01-2022 às 17:43</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-3 p-0 p-sm-2">
-        <div class="publication p-0">
-            <div class="p-2 px-lg-2">
-                <a class="username" href="/">
-                    <img src="~/users/profiles/0/daniel.png" class="profile radius-100" />
-                    Daniel Sanches
-                </a>
-            </div>
-            <div class="card">
-                <img src="~/users/publications/0/istockphoto2.jpg" class="card-img-top img-publication" alt="...">
-                <div class="card-body px-2">
-                    <span class="qty-likes fw-bold mb-3 d-block">38 curtidas</span>
-                    <div class="actions mb-2">
-                        <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
-                        <button class="comment mx-1"><i class="bi bi-chat"></i></button>
-                        <button class="share"><i class="bi bi-share"></i></button>
-                    </div>
-                    <p class="description">
-                        Hoje foi dia de conhecer esse lugar maravilhoso,
-                        Embalse el Yeso, e ficamos apaixonados!
-                        💙 Nós fomos com a minha família e recomendamos muito! 😍🗻💙!
-                    </p>
-
-                    <div class="d-inline">
-                        <small class="date text-muted fw-bold" style="font-size: 10px">23-01-2022 às 17:43</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<partial name="../Modals/_ModalNewPost.cshtml"></partial>
+<script src="~/js/Vue/Index/Index.js"></script>

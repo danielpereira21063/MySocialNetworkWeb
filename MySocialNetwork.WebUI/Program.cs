@@ -1,4 +1,3 @@
-using MySocialNetwork.Domain.Account;
 using MySocialNetwork.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +21,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+
 
 app.UseAuthentication();
 app.UseAuthorization();

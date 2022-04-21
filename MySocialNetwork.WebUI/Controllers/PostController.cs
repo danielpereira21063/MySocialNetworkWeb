@@ -4,7 +4,6 @@ using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ViewModel.Image;
 using MySocialNetwork.Domain.ViewModel.Post;
-using MySocialNetwork.Domain.ViewModel.User;
 using MySocialNetwork.WebUI.Models.ViewModels;
 
 namespace MySocialNetwork.WebUI.Controllers
@@ -47,7 +46,7 @@ namespace MySocialNetwork.WebUI.Controllers
             {
                 Subtitle = model.Subtitle,
                 Images = new List<ImageViewModel>(),
-                User = _userService.GetByEmail(User.Identity.Name)
+                UserId = _userService.GetByEmail(User.Identity.Name).Id
             };
 
             foreach (var img in model.Images)
@@ -59,6 +58,12 @@ namespace MySocialNetwork.WebUI.Controllers
             }
 
             return postViewModel;
+        }
+
+        public IActionResult GetAll()
+        {
+            var posts = _postService.GetAll();
+            return Json(posts);
         }
     }
 }

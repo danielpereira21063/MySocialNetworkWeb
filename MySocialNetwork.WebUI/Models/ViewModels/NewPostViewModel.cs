@@ -1,6 +1,4 @@
-﻿using MySocialNetwork.Domain.ViewModel.Image;
-
-namespace MySocialNetwork.WebUI.Models.ViewModels
+﻿namespace MySocialNetwork.WebUI.Models.ViewModels
 {
     public class NewPostViewModel
     {

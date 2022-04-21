@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MySocialNetwork.Application.Services;
 using MySocialNetwork.Domain.Interfaces;
 
 namespace MySocialNetwork.WebUI.Controllers
