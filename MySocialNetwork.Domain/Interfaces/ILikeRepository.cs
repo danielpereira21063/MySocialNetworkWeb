@@ -8,5 +8,6 @@ namespace MySocialNetwork.Domain.Interfaces
         Like? Save(Like like);
         Like? Update(Like like);
         Like? Remove(Like like);
+        int FindQtyLikes(int postId);
     }
 }

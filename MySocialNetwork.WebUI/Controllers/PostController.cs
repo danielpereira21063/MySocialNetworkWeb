@@ -2,9 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Domain.Interfaces;
+using MySocialNetwork.Domain.ValueObjects;
 using MySocialNetwork.Domain.ViewModel.Image;
 using MySocialNetwork.Domain.ViewModel.Post;
-using MySocialNetwork.WebUI.Models.ViewModels;
+using MySocialNetwork.Domain.ViewModel.User;
 
 namespace MySocialNetwork.WebUI.Controllers
 {
@@ -13,11 +14,13 @@ namespace MySocialNetwork.WebUI.Controllers
     {
         private readonly IPostService _postService;
         private readonly IUserService _userService;
+        private readonly ILikeService _likeService;
 
-        public PostController(IPostService postService, IUserService userService)
+        public PostController(IPostService postService, IUserService userService, ILikeService likeService)
         {
             _postService = postService;
             _userService = userService;
+            _likeService = likeService;
         }
 
         public IActionResult Index()
@@ -31,25 +34,27 @@ namespace MySocialNetwork.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] NewPostViewModel model)
+        public IActionResult Create([FromBody] ObjectExamplePost data)
         {
-            var postViewModel = _NewPostViewModelToPostViewModel(model);
+            var postViewModel = _NewPostViewModelToPostViewModel(data);
 
             _postService.Create(postViewModel);
 
             return Ok();
         }
 
-        private PostViewModel _NewPostViewModelToPostViewModel(NewPostViewModel model)
+        private PostViewModel _NewPostViewModelToPostViewModel(ObjectExamplePost obj)
         {
             var postViewModel = new PostViewModel
             {
-                Subtitle = model.Subtitle,
+                Subtitle = obj.Subtitle,
                 Images = new List<ImageViewModel>(),
                 UserId = _userService.GetByEmail(User.Identity.Name).Id
+
+
             };
 
-            foreach (var img in model.Images)
+            foreach (var img in obj.Images)
             {
                 postViewModel.Images.Add(new ImageViewModel
                 {
@@ -63,7 +68,16 @@ namespace MySocialNetwork.WebUI.Controllers
         public IActionResult GetAll()
         {
             var posts = _postService.GetAll();
-            return Json(posts);
+
+            var idx = 0;
+            foreach (var post in posts)
+            {
+                posts[idx].QtyLikes = _likeService.GetQtyLikes(post.Id);
+                post.ImagesId = new List<int>();
+                idx++;
+            }
+
+            return Ok(posts);
         }
     }
 }

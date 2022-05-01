@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Globalization;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.Text;
 
 #nullable disable
 
@@ -16,6 +14,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
             List<string> names = new List<string>();
             List<string> surnames = new List<string>();
             List<string> subtitles = new List<string>();
+            List<string> comments = new List<string>();
             List<string> images = new List<string>();
             List<string> genres = new List<string>();
 
@@ -114,11 +113,39 @@ namespace MySocialNetwork.Infra.Data.Migrations
             subtitles.Add("Esteja presente em cada momento da sua vida, antes que estes momentos se tornem apenas lembranças. Bons sonhos!");
             subtitles.Add("Os limites que impomos podem se tornar verdadeiras prisões. Sonhe alto e tenha uma boa noite!");
 
+            comments.Add("A vida e uma caixa preta nunca saberemos o seu real significado.⁠");
+            comments.Add("Faça a pessoa que você gosta se sentir especial ao invés de só mais uma.⁠");
+            comments.Add("⁠não deveríamos temer a morte, mais sim a vida.⁠");
+            comments.Add("Teu abraço eras confortante⁠.");
+            comments.Add("Seja estranho. Seja aleatório. Seja quem você é. Porque você nunca sabe quem amaria a pessoa que você esconde.");
+            comments.Add("A vida é um caos aleatório,ordenada pelo tempo.⁠");
+            comments.Add("A verdade, é que dói lembrar dela.⁠");
+            comments.Add("Cada instante é sempre.⁠");
+            comments.Add("O aleatório não existe, nosso cérebro sempre toma decisões mesmo que ocultas.⁠");
+            comments.Add("Um ato aleatório de bondade, por menor que seja, pode ter um tremendo impacto na vida de outra pessoa.");
+            comments.Add("No mundo do aleatório a ordem é não se preocupar.⁠");
+            comments.Add("⁠Cuide de si mesmo como cuidaria de alguém que você ama.⁠");
+            comments.Add("Sinto falta daquelas risadas, mas lembro como você fazia me sentir sozinho.⁠");
+            comments.Add("As vezes me sinto como não fosse deste mundo, acho que a maioria se sente assim desse modo.");
+            comments.Add("Fico pensando o quanto te amei, e muitas das vezes deixei - me de lado. Fui tão sua que tinha esquecido de me, mas as pessoas mudam e esse dia chegou, e hoje sou só minha e de mais ninguém.");
+            comments.Add("Você não precisa de platéia cheia para reconhecer que você é o melhor.⁠");
+            comments.Add("Não venha tirar - me a paciência, já estou exausta demais com os meus próprios pensamentos.⁠");
+            comments.Add("Crescer dói, e dói muito.⁠");
+            comments.Add("E é nas madrugada onde todos os meus pensamentos ocultos acordam, onde uns tentam falar mais alto que outros.");
+            comments.Add("Seja a mudança que você quer ver no mundo.⁠");
+            comments.Add("O dinheiro faz homens ricos, o conhecimento faz homens sábios e a humildade faz grandes homens.⁠");
+            comments.Add("Bons amigos são como estrelas: nem sempre podemos ver, mas temos certeza que estão sempre lá.⁠");
+            comments.Add("Se for pra desistir, desista de ser fraco.⁠");
+            comments.Add("Que todo mal vire amor, que toda dor vire flor.⁠");
+
             for (int i = 1; i <= 30; i++)
             {
-                var name = names[random.Next(0, names.Count)];
+                int idxRandomName = random.Next(0, names.Count);
+                var name = names[idxRandomName];
+                char genre = idxRandomName <= names.Count / 2 - 1 ? 'M' : 'F';
+
                 var surname = surnames[random.Next(0, surnames.Count)];
-                var email = name + random.Next(0, 9999) + emailDomains[random.Next(0, emailDomains.Count)];
+                var email = name + random.Next(0, 99999) + emailDomains[random.Next(0, emailDomains.Count)];
                 email = email.Replace(" ", "").ToLower();
                 if (i % 3 == 0)
                 {
@@ -128,21 +155,42 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 var completeName = name + " " + surname;
 
                 migrationBuilder.Sql($"INSERT INTO aspnetusers (Id, UserName, NormalizedUserName, Email, NormalizedEmail, PasswordHash, SecurityStamp, EmailConfirmed, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnabled, AccessFailedCount) VALUES ('{RandomId()}', '{email}', '{email.ToUpper()}', '{email}', '{email.ToUpper()}', 'AQAAAAEAACcQAAAAEF7ZPYJAAEbq5mbWR/oV8nDW7Rxmw8Mz7002nLqMQmSeI7EtW+iCN7mKiXUycbDkCQ==','GLYT2WREALAQEOIAS7KCELYGFW6HSR2S', 0, 0, 0, 0, 0)");
-                migrationBuilder.Sql($"INSERT INTO users (Id, `Name`, Email, BirthDate, Genre, ProfilePicture, CreatedAt, UpdatedAt) VALUES ({i},'{completeName}', '{email}', '{random.Next(1960, 2005)}/{random.Next(1, 12)}/{random.Next(1, 28)}', '{genres[random.Next(0, 1)]}', NULL, '1959/01/01', '1959/01/01')");
+                migrationBuilder.Sql($"INSERT INTO users (Id, `Name`, Email, BirthDate, Genre, ProfilePicture, CreatedAt, UpdatedAt) VALUES ({i},'{completeName}', '{email}', '{RamdomDate()}', '{genre}', NULL, '{RamdomDate(DateTime.Now.Year, DateTime.Now.Year + 1)}', '{RamdomDate(DateTime.Now.Year, DateTime.Now.Year + 1)}')");
             }
 
 
             for (int i = 1; i <= 100; i++)
             {
-                var createdAt = random.Next(2010, 2022) + "/" + random.Next(1, 12) + "/" + random.Next(1, 28);
+                var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
                 migrationBuilder.Sql($"INSERT INTO posts (Id, UserId, Subtitle, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 6)}, '{subtitles[random.Next(0, subtitles.Count)]}', '{createdAt}', '{createdAt}')");
             }
 
-            for (int i = 1; i <= 1000; i++)
+            for (int i = 1; i <= 500; i++)
             {
-                var createdAt = random.Next(2010, 2022) + "/" + random.Next(1, 12) + "/" + random.Next(1, 28);
-                migrationBuilder.Sql($"INSERT INTO likes (Id, PostId, UserId,IsLiked, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 100)}, {random.Next(1, 30)}, {random.Next(0,1)}, '{createdAt}', '{createdAt}')");
+                var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
+                migrationBuilder.Sql($"INSERT INTO likes (Id, PostId, UserId,IsLiked, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 100)}, {random.Next(1, 30)}, {random.Next(0, 1)}, '{createdAt}', '{createdAt}')");
             }
+
+            for (int i = 1; i <= 100; i++)
+            {
+                var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
+                migrationBuilder.Sql($"INSERT INTO comments (Id, PostId, Text ,UserId, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 100)}, '{comments[random.Next(0, comments.Count)]}', {random.Next(1, 30)}, '{createdAt}', '{createdAt}')");
+            }
+
+
+            for (int i = 0; i <= 5; i++)
+            {
+                /*
+                var path = $@"C:\Users\Daniel\Documents\Estudos\CSharp\MySocialNetwork\MySocialNetwork.WebUI\uploads\users\publications\{i}.jpg";
+                var fileInfo = new FileInfo(path);
+                byte[] data = new byte[fileInfo.Length];
+                string file = Encoding.Default.GetString(data);
+
+                var createdAt = random.Next(2010, DateTime.Now.Year) + "/" + random.Next(1, 12) + "/" + random.Next(1, 28);
+                migrationBuilder.Sql($"INSERT INTO images (Id, PostId, File, CreatedAt, UpdatedAt) VALUES ({i + 1}, {random.Next(1, 100)}, '{file}', '{createdAt}', '{createdAt}')");
+                */
+            }
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -160,6 +208,39 @@ namespace MySocialNetwork.Infra.Data.Migrations
                 );
 
             return hashId.ToLower();
+        }
+
+        private static string RamdomDate(int minYear = 1960, int maxYear = 2010)
+        {
+            var random = new Random();
+
+            var year = random.Next(minYear, maxYear);
+            var mounth = random.Next(1, 12);
+            var day = random.Next(1, 31);
+
+            string strDay = day <= 9 ? "0" + day : day.ToString();
+            string strMounth = mounth <= 9 ? "0" + mounth : mounth.ToString();
+
+
+            if (mounth % 2 != 0 && day == 31)
+            {
+                strDay = "30";
+            }
+
+            if (mounth == 2 && day >= 30)
+            {
+                if (DateTime.IsLeapYear(year))
+                {
+                    strDay = "29";
+                }
+                else
+                {
+                    strDay = "28";
+                }
+            }
+
+            return year + "/" + strMounth + "/" + strDay;
+
         }
     }
 }

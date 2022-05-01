@@ -13,10 +13,6 @@
 
   <ItemGroup>
     <Content Include="uploads\users\profiles\0\daniel.png" />
-    <Content Include="uploads\users\publications\0\grand-canal-veneza.jpg" />
-    <Content Include="uploads\users\publications\0\group-old-healthy.jpg" />
-    <Content Include="uploads\users\publications\0\istockphoto.jpg" />
-    <Content Include="uploads\users\publications\0\istockphoto2.jpg" />
   </ItemGroup>
 
   <ItemGroup>

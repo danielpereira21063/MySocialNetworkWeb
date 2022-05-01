@@ -5,6 +5,13 @@ namespace MySocialNetwork.Application.Services
 {
     public class LikeService : ILikeService
     {
+        private readonly ILikeRepository _likeRepository;
+
+        public LikeService(ILikeRepository likeRepository)
+        {
+            _likeRepository = likeRepository;
+        }
+
         public void Create(LikeViewModel? entity)
         {
             throw new NotImplementedException();
@@ -33,6 +40,11 @@ namespace MySocialNetwork.Application.Services
         public void Update(LikeViewModel? entity)
         {
             throw new NotImplementedException();
+        }
+
+        public int GetQtyLikes(int postId)
+        {
+            return _likeRepository.FindQtyLikes(postId);
         }
     }
 }

@@ -15,7 +15,21 @@ namespace MySocialNetwork.Infra.Data.Context
 
         public void Seed()
         {
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Post>(IQueryable<Post> source)'.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Image>(IQueryable<Image> source)'.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<User>(IQueryable<User> source)'.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Address>(IQueryable<Address> source)'.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Like>(IQueryable<Like> source)'.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Comment>(IQueryable<Comment> source)'.
             bool hasData = _context.Users.Any() || _context.Comments.Any() || _context.Posts.Any() || _context.Addresses.Any() || _context.Likes.Any() || _context.Images.Any();
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Comment>(IQueryable<Comment> source)'.
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Like>(IQueryable<Like> source)'.
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Address>(IQueryable<Address> source)'.
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<User>(IQueryable<User> source)'.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Image>(IQueryable<Image> source)'.
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'source' in 'bool Queryable.Any<Post>(IQueryable<Post> source)'.
             if (hasData)
             {
                 return;

@@ -60,6 +60,7 @@ namespace MySocialNetwork.Infra.IoC
 
             services.AddScoped<IImageRepository, ImageRepository>();
 
+            services.AddScoped<ILikeService, LikeService>();
             services.AddScoped<ILikeRepository, LikeRepository>();
 
             _StartAutoMapper(services);

@@ -28,8 +28,8 @@
                 </div>
                 <div class="card">
                     <div v-on:click="redirectToSeePost(post.id)" class="pointer">
-                        <div v-if="post.images.length > 0">
-                            <img v-for="img in post.images" v-bind:src="`data:image/jpg;base64,${img.file}`" class="card-img-top img-publication" alt="...">
+                        <div v-if="post.imagesId.length > 0">
+                            <img v-for="img in post.imagesId" v-bind:src="`data:image/jpg;base64,${img.file}`" class="card-img-top img-publication" alt="...">
                         </div>
                         <div v-else style="height: 235px; width: 100%" class="d-flex align-items-center bg-secondary">
                             <h4 class="px-3"
@@ -39,13 +39,13 @@
                         </div>
                     </div>
                     <div class="card-body px-2">
-                        <span class="qty-likes fw-bold mb-3 d-block">{{post.likes.length}} curtida{{post.likes.length != 1 ? 's' : ''}}</span>
+                        <span class="qty-likes fw-bold mb-3 d-block">{{post.qtyLikes}} curtida{{post.QtyLikes != 1 ? 's' : ''}}</span>
                         <div class="actions mb-2">
                             <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
                             <button class="comment mx-1"><i class="bi bi-chat"></i></button>
                             <button class="share"><i class="bi bi-share"></i></button>
                         </div>
-                        <p class="description" v-show="post.images.length > 0">
+                        <p class="description" v-show="post.imagesId.length > 0">
                             {{post.subtitle}}
                         </p>
 

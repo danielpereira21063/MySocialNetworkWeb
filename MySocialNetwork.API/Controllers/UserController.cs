@@ -3,7 +3,9 @@ using MySocialNetwork.Application.Interfaces;
 
 namespace MySocialNetwork.API.Controllers
 {
-    public class UserController : Controller
+    [Route("/api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
 
@@ -17,14 +19,14 @@ namespace MySocialNetwork.API.Controllers
         {
             var users = _userService.GetAll(searchString);
 
-            return Json(users);
+            return Ok(users);
         }
 
         [HttpGet("/User/GetByEmail")]
         public IActionResult GetUserByEmail(string email)
         {
             var user = _userService.GetByEmail(email);
-            return Json(user);
+            return Ok(user);
         }
     }
 }

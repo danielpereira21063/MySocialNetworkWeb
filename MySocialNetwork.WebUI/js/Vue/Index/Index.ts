@@ -49,8 +49,6 @@ const AppIndex: any = {
                     this.getPosts();
                 }
             };
-
-
         },
 
         getPosts() {

@@ -6,6 +6,7 @@ using MySocialNetwork.Application.Utils;
 using MySocialNetwork.Domain.Account;
 using MySocialNetwork.Domain.Enums;
 using MySocialNetwork.Domain.Validation;
+using MySocialNetwork.Domain.ValueObjects;
 using MySocialNetwork.Domain.ViewModel.User;
 using MySocialNetwork.WebUI.Models.ViewModels;
 
@@ -64,7 +65,7 @@ namespace MySocialNetwork.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(UserRegisterViewModel data)
+        public IActionResult Register(ObjectExampleUser data)
         {
             _ValidadeUserData(data);
 
@@ -91,7 +92,7 @@ namespace MySocialNetwork.WebUI.Controllers
                 return View(data);
             }
 
-            var newUserViewModel = _UserRegisterViewModel_To_UserViewModel(data);
+            var newUserViewModel = _ObjectExampleUser_To_UserViewModel(data);
 
             _userService?.Create(newUserViewModel);
 
@@ -144,12 +145,12 @@ namespace MySocialNetwork.WebUI.Controllers
             return genres;
         }
 
-        private void _ValidadeUserData(UserRegisterViewModel? obj)
+        private void _ValidadeUserData(ObjectExampleUser? obj)
         {
             DomainException.When(obj == null, "Erro ao recuperar informações dos dados enviados.");
         }
 
-        private UserViewModel _UserRegisterViewModel_To_UserViewModel(UserRegisterViewModel obj)
+        private UserViewModel _ObjectExampleUser_To_UserViewModel(ObjectExampleUser obj)
         {
             var userVM = new UserViewModel()
             {

@@ -57,7 +57,8 @@ namespace MySocialNetwork.Infra.Data.EntitiesConfiguration
                     BirthDate = DateTime.Now.AddDays(-239020),
                     Genre = Enum.Parse<Genre>("M"),
                 },
-                new User {
+                new User
+                {
                     Name = "Miguel Alves",
                     Email = "miguel@email.com",
                     BirthDate = DateTime.Now.AddDays(-21912),

@@ -45,8 +45,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
         {
             return _context.Posts
                 .Include(x => x.User)
-                .Include(x => x.Images)
-                .Include(x => x.Likes)
                 .Include(x => x.Comments)
                 .OrderByDescending(x => x.CreatedAt).Take(24).ToList();
         }
