@@ -1,3 +1,5 @@
+using FormController.UI.Views;
+
 namespace FormController.UI
 {
     internal static class Program

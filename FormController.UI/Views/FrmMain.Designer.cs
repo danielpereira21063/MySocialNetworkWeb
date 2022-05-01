@@ -1,4 +1,4 @@
-﻿namespace FormController.UI
+﻿namespace FormController.UI.Views
 {
     partial class FrmMain
     {
