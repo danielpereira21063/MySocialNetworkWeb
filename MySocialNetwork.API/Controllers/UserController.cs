@@ -28,5 +28,24 @@ namespace MySocialNetwork.API.Controllers
             var user = _userService.GetByEmail(email);
             return Ok(user);
         }
+
+        [HttpPost("/User/AddProfilePicture/{userId}")]
+        public IActionResult AddProfilePicture(int userId, [FromBody] string base64Image)
+        {
+            var user = _userService.GetById(userId);
+
+            if (user == null)
+            {
+                return NotFound("Usuário não encontrado.");
+            }
+
+            var byteImage = Convert.FromBase64String(base64Image);
+
+            user.ProfilePicture = byteImage;
+
+            _userService.Update(user);
+
+            return Ok(user);
+        }
     }
 }

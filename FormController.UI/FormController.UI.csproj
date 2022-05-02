@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MySocialNetwork.Infra.IoC\MySocialNetwork.Infra.IoC.csproj" />
+  </ItemGroup>
+
 </Project>

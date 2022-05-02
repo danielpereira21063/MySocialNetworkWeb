@@ -1,22 +1,15 @@
 ﻿using FormController.UI.Controllers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FormController.UI.Views
 {
     public partial class SeedImageProfilePicture : Form
     {
+        private ImageController _imageController;
         public SeedImageProfilePicture()
         {
             InitializeComponent();
+            _imageController = new ImageController();
         }
 
         private void BtnLoadProfilePictures_Click(object sender, EventArgs e)
@@ -57,7 +50,7 @@ namespace FormController.UI.Views
             }
 
 
-            ImageController.SendProfilePictures(images);
+            _imageController.SendProfilePictures(images);
         }
 
         private void CompressAndSave(string[] images, long quality = 40L)

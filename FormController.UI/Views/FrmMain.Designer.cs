@@ -38,9 +38,10 @@
             // 
             // BtnCloseProgram
             // 
-            this.BtnCloseProgram.Location = new System.Drawing.Point(3, 182);
+            this.BtnCloseProgram.Location = new System.Drawing.Point(3, 201);
+            this.BtnCloseProgram.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCloseProgram.Name = "BtnCloseProgram";
-            this.BtnCloseProgram.Size = new System.Drawing.Size(75, 24);
+            this.BtnCloseProgram.Size = new System.Drawing.Size(86, 32);
             this.BtnCloseProgram.TabIndex = 0;
             this.BtnCloseProgram.Text = "Sair";
             this.BtnCloseProgram.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // 
             // BtnGenerateAllData
             // 
-            this.BtnGenerateAllData.Location = new System.Drawing.Point(141, 11);
+            this.BtnGenerateAllData.Location = new System.Drawing.Point(161, 15);
+            this.BtnGenerateAllData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnGenerateAllData.Name = "BtnGenerateAllData";
-            this.BtnGenerateAllData.Size = new System.Drawing.Size(176, 41);
+            this.BtnGenerateAllData.Size = new System.Drawing.Size(201, 55);
             this.BtnGenerateAllData.TabIndex = 1;
             this.BtnGenerateAllData.Text = "Semear base de dados";
             this.BtnGenerateAllData.UseVisualStyleBackColor = true;
@@ -58,9 +60,10 @@
             // 
             // BtnGerateProfilePictures
             // 
-            this.BtnGerateProfilePictures.Location = new System.Drawing.Point(141, 58);
+            this.BtnGerateProfilePictures.Location = new System.Drawing.Point(161, 77);
+            this.BtnGerateProfilePictures.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnGerateProfilePictures.Name = "BtnGerateProfilePictures";
-            this.BtnGerateProfilePictures.Size = new System.Drawing.Size(176, 37);
+            this.BtnGerateProfilePictures.Size = new System.Drawing.Size(201, 49);
             this.BtnGerateProfilePictures.TabIndex = 2;
             this.BtnGerateProfilePictures.Text = "Fotos de perfil";
             this.BtnGerateProfilePictures.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(141, 101);
+            this.button3.Location = new System.Drawing.Point(161, 135);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 40);
+            this.button3.Size = new System.Drawing.Size(201, 53);
             this.button3.TabIndex = 3;
             this.button3.Text = "Imagens de postagens";
             this.button3.UseVisualStyleBackColor = true;
@@ -81,20 +85,22 @@
             this.panel1.Controls.Add(this.BtnCloseProgram);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.BtnGerateProfilePictures);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(14, 16);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(441, 209);
+            this.panel1.Size = new System.Drawing.Size(504, 237);
             this.panel1.TabIndex = 4;
             // 
             // FrmMain
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 233);
+            this.ClientSize = new System.Drawing.Size(531, 256);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMain";

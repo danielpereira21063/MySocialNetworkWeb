@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using MySocialNetwork.Infra.Data.Context;
 using static System.Windows.Forms.ImageList;
-using System.Drawing.Imaging;
 
 namespace FormController.UI.Controllers
 {
-    public class ImageController
+    public class ImageController : Base
     {
-        private HttpClient client;
-
         public static Image ByteArrayToImage(byte[] byteArray)
         {
             var ms = new MemoryStream(byteArray);
@@ -26,13 +18,15 @@ namespace FormController.UI.Controllers
             return ms.ToArray();
         }
 
-        public static void SendProfilePictures(ImageCollection images)
+        public void SendProfilePictures(ImageCollection images)
         {
             var converter = new ImageConverter();
 
+            var usersId = new List<int>(); //retornar uma lista com o id de todos os usuários sem fotos de perfil
             foreach (var img in images)
             {
-                var imgByte = (byte[])converter.ConvertTo(img,typeof(byte[]));
+                var byteImage = (byte[])converter.ConvertTo(img, typeof(byte[]));
+                var base64Image = Convert.ToBase64String(byteImage);
             }
 
         }

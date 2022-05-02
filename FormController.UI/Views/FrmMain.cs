@@ -1,5 +1,3 @@
-using FormController.UI.Views;
-
 namespace FormController.UI.Views
 {
     public partial class FrmMain : Form
