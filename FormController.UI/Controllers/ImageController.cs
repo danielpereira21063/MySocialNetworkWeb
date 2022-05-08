@@ -1,34 +1,43 @@
 ﻿using MySocialNetwork.Infra.Data.Context;
+using FormController.UI.ClientHttp;
 using static System.Windows.Forms.ImageList;
+using FormController.UI.Services;
 
 namespace FormController.UI.Controllers
 {
-    public class ImageController : Base
+    public class ImageController
     {
-        public static Image ByteArrayToImage(byte[] byteArray)
+        private ImageService _imageService { get; set; }
+        public ImageController()
         {
-            var ms = new MemoryStream(byteArray);
-            return Image.FromStream(ms);
-        }
-
-        public static byte[] ImageToByteArray(Image image)
-        {
-            var ms = new MemoryStream();
-            image.Save(ms, image.RawFormat);
-            return ms.ToArray();
+            _imageService = new ImageService();
         }
 
         public void SendProfilePictures(ImageCollection images)
         {
-            var converter = new ImageConverter();
-
-            var usersId = new List<int>(); //retornar uma lista com o id de todos os usuários sem fotos de perfil
-            foreach (var img in images)
+            //var usersId = new List<int>(); //retornar uma lista com o id de todos os usuários sem fotos de perfil
+            //for (int i = 1; i <= 30; i++)
+            //{
+            //    usersId.Add(i);
+            //}
+            try
             {
-                var byteImage = (byte[])converter.ConvertTo(img, typeof(byte[]));
-                var base64Image = Convert.ToBase64String(byteImage);
-            }
+                int userId = 1;
 
+                var converter = new ImageConverter();
+                int acimaDe = 6;
+                foreach (var img in images)
+                {
+                    var byteImage = (byte[])converter.ConvertTo(img, typeof(byte[]));
+                    var base64Image = Convert.ToBase64String(byteImage);
+                    _imageService.SendImage($"/User/AddProfilePicture/{userId}", base64Image);
+                    userId++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -45,7 +45,7 @@ namespace MySocialNetwork.API.Controllers
 
             _userService.Update(user);
 
-            return Ok(user);
+            return Ok();
         }
     }
 }

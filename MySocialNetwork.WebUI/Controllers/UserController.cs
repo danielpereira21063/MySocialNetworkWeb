@@ -38,6 +38,19 @@ namespace MySocialNetwork.WebUI.Controllers
             return View(user);
         }
 
+
+        [HttpGet("/User/ProfilePicture/{userId}")]
+        public IActionResult GetProfilePicture(int userId)
+        {
+            var profilePicture = _userService.GetProfilePicture(userId);
+
+            if (profilePicture == null)
+            {
+                return NotFound();
+            }
+
+            return File(profilePicture, "image/jpeg");
+        }
         public IActionResult GetUserProfileById(int userId)
         {
             var user = _userService.GetById(userId);

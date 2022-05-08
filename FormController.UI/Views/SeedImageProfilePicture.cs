@@ -1,4 +1,5 @@
 ﻿using FormController.UI.Controllers;
+using FormController.UI.Util;
 using System.Drawing.Imaging;
 
 namespace FormController.UI.Views
@@ -53,20 +54,20 @@ namespace FormController.UI.Views
             _imageController.SendProfilePictures(images);
         }
 
-        private void CompressAndSave(string[] images, long quality = 40L)
+        private void CompressAndSave(string[] images, long quality = 80L)
         {
-            var param = new EncoderParameters(1);
             var converter = new ImageConverter();
-            param.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
-            var codec = ImageCodecInfo.GetImageDecoders().FirstOrDefault(c => c.FormatID == ImageFormat.Jpeg.Guid || c.FormatID == ImageFormat.Png.Guid);
-            var ms = new MemoryStream();
+            //var param = new EncoderParameters(1);
+            //param.Param[0] = new EncoderParameter(Encoder.Quality, quality);
+            //var codec = ImageCodecInfo.GetImageDecoders().FirstOrDefault(c => c.FormatID == ImageFormat.Jpeg.Guid || c.FormatID == ImageFormat.Png.Guid);
+            //var ms = new MemoryStream();
 
             foreach (var file in images)
             {
-                var image = ImageController.ByteArrayToImage(File.ReadAllBytes(file));
-                image.Save(ms, codec, param);
-                var byteImage = ImageController.ImageToByteArray(image);
-                ImgListProfilePictures.Images.Add(ImageController.ByteArrayToImage(byteImage));
+                var image = ExImage.ByteArrayToImage(File.ReadAllBytes(file));
+                //image.Save(ms, codec, param);
+                var byteImage = ExImage.ImageToByteArray(image);
+                ImgListProfilePictures.Images.Add(ExImage.ByteArrayToImage(byteImage));
             }
         }
     }

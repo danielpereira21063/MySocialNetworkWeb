@@ -10,5 +10,6 @@ namespace MySocialNetwork.Domain.Interfaces
         void Update(User user);
         void Remove(User user);
         List<User>? FindAll(string? searchString);
+        Byte[]? FindProfilePicture(int userId);
     }
 }

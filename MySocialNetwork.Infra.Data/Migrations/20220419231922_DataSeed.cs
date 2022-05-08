@@ -193,11 +193,6 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-
-        }
-
         private static string RandomId(int size = 36)
         {
             Random random = new Random();
@@ -216,7 +211,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
             var year = random.Next(minYear, maxYear);
             var mounth = random.Next(1, 12);
-            var day = random.Next(1, 31);
+            var day = random.Next(1, 28); //31
 
             string strDay = day <= 9 ? "0" + day : day.ToString();
             string strMounth = mounth <= 9 ? "0" + mounth : mounth.ToString();
@@ -231,7 +226,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
             {
                 if (DateTime.IsLeapYear(year))
                 {
-                    strDay = "29";
+                    strDay = "28";//29
                 }
                 else
                 {
@@ -242,5 +237,11 @@ namespace MySocialNetwork.Infra.Data.Migrations
             return year + "/" + strMounth + "/" + strDay;
 
         }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
+        }
     }
+
 }

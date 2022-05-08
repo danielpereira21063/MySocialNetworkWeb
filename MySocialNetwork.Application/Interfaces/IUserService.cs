@@ -6,5 +6,6 @@ namespace MySocialNetwork.Application.Interfaces
     {
         List<UserViewModel>? GetAll(string? searchString);
         UserViewModel? GetByEmail(string email);
+        Byte[]? GetProfilePicture(int userId);
     }
 }

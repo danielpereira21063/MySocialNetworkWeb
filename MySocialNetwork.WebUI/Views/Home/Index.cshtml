@@ -22,7 +22,7 @@
             <div class="publication p-0">
                 <div class="p-2 px-lg-2">
                     <a class="username" v-bind:href="`/User/Profile/${post.user.id}`">
-                        <img src="/users/profiles/0/daniel.png" onerror="loadDefaultPostImage(this)" class="profile radius-100" />
+                        <img v-bind:src="'/User/profilePicture/' + post.user.id" onerror="loadDefaultPostImage(this)" class="profile radius-100" />
                         {{post.user.name.split(" ")[0]}}
                     </a>
                 </div>

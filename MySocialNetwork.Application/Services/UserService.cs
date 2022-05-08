@@ -57,5 +57,10 @@ namespace MySocialNetwork.Application.Services
         {
             throw new NotImplementedException();
         }
+
+        public byte[]? GetProfilePicture(int userId)
+        {
+            return _userRepositoy.FindProfilePicture(userId);
+        }
     }
 }

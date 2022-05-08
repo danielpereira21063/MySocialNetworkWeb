@@ -20,9 +20,7 @@ namespace MySocialNetwork.Infra.Data.Context
 
         public DbSet<Post>? Posts { get; set; }
         public DbSet<Image>? Images { get; set; }
-#pragma warning disable CS0114 // 'ApplicationDbContext.Users' hides inherited member 'IdentityUserContext<ApplicationUser, string, IdentityUserClaim<string>, IdentityUserLogin<string>, IdentityUserToken<string>>.Users'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         public DbSet<User>? Users { get; set; }
-#pragma warning restore CS0114 // 'ApplicationDbContext.Users' hides inherited member 'IdentityUserContext<ApplicationUser, string, IdentityUserClaim<string>, IdentityUserLogin<string>, IdentityUserToken<string>>.Users'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Like>? Likes { get; set; }
         public DbSet<Address>? Addresses { get; set; }
