@@ -4,10 +4,10 @@ namespace MySocialNetwork.Domain.Interfaces
 {
     public interface ILikeRepository
     {
-        IEnumerable<Like>? FindAll(int userId, int postId);
         Like? Save(Like like);
         Like? Update(Like like);
         Like? Remove(Like like);
+        Like? FindByPostId(int postId,int userId);
         int FindQtyLikes(int postId);
     }
 }

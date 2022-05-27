@@ -52,6 +52,23 @@ const AppIndex = {
                 }
             };
             httpRequest.send();
+        },
+
+        like(postId) {
+            const url = "/post/like/" + postId;
+            httpRequest.open("PUT", url);
+            httpRequest.onreadystatechange = () => {
+                if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
+                    this.getPosts();
+                }
+            }
+            httpRequest.send();
+        },
+
+        likedByThisUser(post) {
+            var liked = post.likes.find(x => x.userId == post.userId) == null ? false : true;
+            console.log(post)
+            return liked;
         }
     },
     created() {

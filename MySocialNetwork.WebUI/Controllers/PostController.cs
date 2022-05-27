@@ -79,5 +79,17 @@ namespace MySocialNetwork.WebUI.Controllers
 
             return Ok(posts);
         }
+
+        [HttpPut("/post/like/{postId}")]
+        public IActionResult Like(int postId)
+        {
+            var user = _userService.GetByEmail(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound("Usuário não encontrado.");
+            }
+            _postService.Like(user.Id, postId);
+            return Ok();
+        }
     }
 }

@@ -41,7 +41,7 @@
                     <div class="card-body px-2">
                         <span class="qty-likes fw-bold mb-3 d-block">{{post.qtyLikes}} curtida{{post.QtyLikes != 1 ? 's' : ''}}</span>
                         <div class="actions mb-2">
-                            <button class="like"><i class="bi bi-heart-fill" style="color: var(--orange)"></i></button>
+                            <button class="like" v-on:click="like(post.id)"><i class="bi" v-bind:class="{'bi-heart-fill': likedByThisUser(post), 'bi-heart': !likedByThisUser(post)}" style="color: var(--orange)"></i></button>
                             <button class="comment mx-1"><i class="bi bi-chat"></i></button>
                             <button class="share"><i class="bi bi-share"></i></button>
                         </div>

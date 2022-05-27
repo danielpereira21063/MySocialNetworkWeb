@@ -13,8 +13,6 @@ namespace MySocialNetwork.Domain.ViewModel.Post
         public int QtyLikes { get; set; }
         public DateTime CreatedAt { get; set; }
         public int UserId { get; set; }
-
-        [JsonIgnore]
         public List<LikeViewModel> Likes { get; set; }
         public List<int>? ImagesId { get; set; }
 

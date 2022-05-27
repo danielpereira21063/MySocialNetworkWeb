@@ -15,13 +15,11 @@ namespace MySocialNetwork.Infra.Data.Repositories
 
         public Like? Save(Like like)
         {
-            throw new NotImplementedException();
+            _context.Likes.Add(like);
+            _context.SaveChanges();
+            return like;
         }
 
-        public IEnumerable<Like>? FindAll(int userId, int postId)
-        {
-            throw new NotImplementedException();
-        }
 
         public Like? Remove(Like like)
         {
@@ -30,12 +28,19 @@ namespace MySocialNetwork.Infra.Data.Repositories
 
         public Like? Update(Like like)
         {
-            throw new NotImplementedException();
+            _context.Likes.Update(like);
+            _context.SaveChanges();
+            return like;
         }
 
         public int FindQtyLikes(int postIt)
         {
             return _context.Likes.Count(x => x.Post.Id == postIt);
+        }
+
+        public Like? FindByPostId(int postId, int userId)
+        {
+            return _context.Likes.FirstOrDefault(x => x.Post.Id.Equals(postId) && x.User.Id.Equals(userId));
         }
     }
 }

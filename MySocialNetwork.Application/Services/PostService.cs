@@ -9,11 +9,15 @@ namespace MySocialNetwork.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IPostRepository _postRepository;
+        private readonly ILikeRepository _likeRepository;
+        private readonly IUserRepository _userRepository;
 
-        public PostService(IMapper mapper, IPostRepository postRepository)
+        public PostService(IMapper mapper, IPostRepository postRepository, ILikeRepository likeRepository, IUserRepository userRepository)
         {
             _mapper = mapper;
             _postRepository = postRepository;
+            _likeRepository = likeRepository;
+            _userRepository = userRepository;
         }
 
         public void Create(PostViewModel? entity)
@@ -24,6 +28,27 @@ namespace MySocialNetwork.Application.Services
             //post.User = _mapper.Map<User>(entity.User);
 
             _postRepository.Save(post);
+        }
+
+        public void Like(int userId, int postId)
+        {
+            var userLike = _likeRepository.FindByPostId(postId, userId);
+
+            if (userLike == null)
+            {
+                var newLike = new Like()
+                {
+                    IsLiked = true,
+                    Post = _postRepository.Find(postId),
+                    User = _userRepository.Find(userId)
+                };
+
+                _likeRepository.Save(newLike);
+                return;
+            }
+
+            userLike.IsLiked = !userLike.IsLiked;
+            _likeRepository.Update(userLike);
         }
 
         public List<PostViewModel>? GetAll(int userId)

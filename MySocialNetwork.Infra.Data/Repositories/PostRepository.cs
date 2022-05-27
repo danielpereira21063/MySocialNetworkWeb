@@ -46,7 +46,14 @@ namespace MySocialNetwork.Infra.Data.Repositories
             return _context.Posts
                 .Include(x => x.User)
                 .Include(x => x.Comments)
-                .OrderByDescending(x => x.CreatedAt).Take(24).ToList();
+                .Include(x=>x.Likes)
+                .OrderByDescending(x => x.CreatedAt)
+                .Take(24).ToList();
+        }
+
+        public Post? Find(int postId)
+        {
+            return _context.Posts.FirstOrDefault(x => x.Id.Equals(postId));
         }
     }
 }
