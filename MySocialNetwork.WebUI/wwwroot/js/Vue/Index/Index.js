@@ -6,7 +6,8 @@ const AppIndex = {
                 subtitle: "",
                 images: []
             },
-            postsViewModel: []
+            postsViewModel: [],
+            loggedUser: {}
         };
     },
     methods: {
@@ -25,6 +26,7 @@ const AppIndex = {
                     }
                 });
             });
+
             const url = "/post/create";
             httpRequest.open("POST", url);
             httpRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -54,6 +56,18 @@ const AppIndex = {
             httpRequest.send();
         },
 
+        getLoggedUser() {
+            var thisvue = this;
+            const url = "/User/GetLogged";
+            $.ajax({
+                type: "get",
+                url: url,
+                success: function (resp) {
+                    thisvue.loggedUser = resp;
+                    console.log(resp)
+                }
+            });
+        },
         like(postId) {
             const url = "/post/like/" + postId;
             httpRequest.open("PUT", url);
@@ -66,12 +80,22 @@ const AppIndex = {
         },
 
         likedByThisUser(post) {
-            var liked = post.likes.find(x => x.userId == post.userId) == null ? false : true;
-            console.log(post)
+            var liked = post.likes.find(x => x.userId == this.loggedUser.id && x.isLiked) == null ? false : true;
+
             return liked;
+        },
+
+        getQtyPostLikes(post) {
+            return post.likes.reduce((acc, cur) => acc += (cur.isLiked ? 1 : 0), 0);
+        },
+        showDivToComment(idx) {
+            $(".div-comment").addClass("d-none")
+
+            $("#div-comment-" + idx).removeClass("d-none");
         }
     },
     created() {
+        this.getLoggedUser();
         this.getPosts();
     },
     mounted() {

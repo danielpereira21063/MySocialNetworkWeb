@@ -35,7 +35,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
 
         public int FindQtyLikes(int postIt)
         {
-            return _context.Likes.Count(x => x.Post.Id == postIt);
+            return _context.Likes.Where(x => x.IsLiked).Count(x => x.Post.Id == postIt);
         }
 
         public Like? FindByPostId(int postId, int userId)

@@ -177,3 +177,17 @@ button, .btn {
 .font-15px {
     font-size: 15px;
 }
+
+.liked {
+    color: var(--orange);
+}
+
+.div-comment textarea {
+    background: inherit;
+    padding: 8px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px !important;
+    border: 1px solid #4e4e4e !important;
+    width: 100%;
+}
