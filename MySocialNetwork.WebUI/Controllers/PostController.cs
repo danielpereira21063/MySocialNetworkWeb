@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySocialNetwork.Application.Interfaces;
 using MySocialNetwork.Domain.Interfaces;
 using MySocialNetwork.Domain.ValueObjects;
+using MySocialNetwork.Domain.ViewModel.Comment;
 using MySocialNetwork.Domain.ViewModel.Image;
 using MySocialNetwork.Domain.ViewModel.Post;
 using MySocialNetwork.Domain.ViewModel.User;
@@ -13,14 +14,16 @@ namespace MySocialNetwork.WebUI.Controllers
     public class PostController : Controller
     {
         private readonly IPostService _postService;
-        private readonly IUserService _userService;
         private readonly ILikeService _likeService;
+        private readonly ICommentService _commentService;
+        private readonly IUserService _userService;
 
-        public PostController(IPostService postService, IUserService userService, ILikeService likeService)
+        public PostController(IPostService postService, IUserService userService, ILikeService likeService, ICommentService commentService)
         {
             _postService = postService;
-            _userService = userService;
             _likeService = likeService;
+            _commentService = commentService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -89,6 +92,20 @@ namespace MySocialNetwork.WebUI.Controllers
                 return NotFound("Usuário não encontrado.");
             }
             _postService.Like(user.Id, postId);
+            return Ok();
+        }
+
+        [HttpPost("/post/comment/{postId}")]
+        public IActionResult Comment(int postId, [FromBody] string comment)
+        {
+            var newComment = new CommentViewModel()
+            {
+                Post = _postService.GetById(postId),
+                Text = comment,
+                User = _userService.GetByEmail(User.Identity.Name)
+            };
+
+            _commentService.Create(newComment);
             return Ok();
         }
     }

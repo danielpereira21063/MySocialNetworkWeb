@@ -69,7 +69,7 @@ namespace MySocialNetwork.Application.Services
 
         public PostViewModel? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<PostViewModel>(_postRepository.Find(id));
         }
 
         public void Remove(PostViewModel? entity)

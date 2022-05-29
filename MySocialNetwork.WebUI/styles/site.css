@@ -96,6 +96,7 @@ input::placeholder {
 .publication {
     border-radius: 5px;
     background: var(--gray);
+    width: 100%;
 }
 
 .radius-100 {
@@ -185,9 +186,16 @@ button, .btn {
 .div-comment textarea {
     background: inherit;
     padding: 8px;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     color: #fff;
     font-size: 12px !important;
     border: 1px solid #4e4e4e !important;
     width: 100%;
+}
+
+.publication .comments-list {
+    font-size: 11px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }

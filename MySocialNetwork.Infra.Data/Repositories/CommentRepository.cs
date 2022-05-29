@@ -1,13 +1,26 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
 using MySocialNetwork.Domain.Interfaces;
+using MySocialNetwork.Infra.Data.Context;
 
 namespace MySocialNetwork.Infra.Data.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
+        private readonly ApplicationDbContext _context;
+
+        public CommentRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public Comment? Save(Comment comment)
         {
-            throw new NotImplementedException();
+            comment.Post = _context.Posts.FirstOrDefault(x => x.Id.Equals(comment.Post.Id));
+            comment.User = _context.Users.FirstOrDefault(x => x.Id.Equals(comment.User.Id));
+
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+            return comment;
         }
 
         public List<Comment> FindAll(int userId, int postId)

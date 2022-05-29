@@ -16,7 +16,7 @@ namespace MySocialNetwork.Domain.ViewModel.Post
         public List<LikeViewModel> Likes { get; set; }
         public List<int>? ImagesId { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public List<ImageViewModel>? Images { get; set; }
         public UserViewModel? User { get; set; }
         public List<CommentViewModel>? Comments { get; set; }

@@ -64,7 +64,6 @@ const AppIndex = {
                 url: url,
                 success: function (resp) {
                     thisvue.loggedUser = resp;
-                    console.log(resp)
                 }
             });
         },
@@ -77,6 +76,19 @@ const AppIndex = {
                 }
             }
             httpRequest.send();
+        },
+        comment(postId) {
+            const thisvue = this;
+            $.ajax({
+                type: "post",
+                data: JSON.stringify($(`#text-comment-${postId}`).val()),
+                contentType: "application/json",
+                url: "/post/comment/" + postId,
+                success: function (resp) {
+                    $(`#text-comment-${postId}`).val("");
+                    thisvue.getPosts();
+                }
+            });
         },
 
         likedByThisUser(post) {

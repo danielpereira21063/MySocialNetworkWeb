@@ -48,6 +48,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
                 .Include(x => x.Comments)
                 .Include(x => x.Likes)
                 .ThenInclude(x => x.User)
+                .Include(x=>x.Images)
                 .OrderBy(x => x.CreatedAt)
                 .Take(24).ToList();
         }
