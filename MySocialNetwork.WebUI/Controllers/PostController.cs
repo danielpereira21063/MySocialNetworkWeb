@@ -6,7 +6,6 @@ using MySocialNetwork.Domain.ValueObjects;
 using MySocialNetwork.Domain.ViewModel.Comment;
 using MySocialNetwork.Domain.ViewModel.Image;
 using MySocialNetwork.Domain.ViewModel.Post;
-using MySocialNetwork.Domain.ViewModel.User;
 
 namespace MySocialNetwork.WebUI.Controllers
 {

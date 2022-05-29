@@ -2,7 +2,6 @@
 using MySocialNetwork.Domain.ViewModel.Image;
 using MySocialNetwork.Domain.ViewModel.Like;
 using MySocialNetwork.Domain.ViewModel.User;
-using System.Text.Json.Serialization;
 
 namespace MySocialNetwork.Domain.ViewModel.Post
 {

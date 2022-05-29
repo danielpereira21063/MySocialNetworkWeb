@@ -1,8 +1,9 @@
 ﻿using MySocialNetwork.Domain.Entities.UserEntities;
+using MySocialNetwork.Domain.Interfaces.Abstractions;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : IUnitOfWork
     {
         User? Find(int id);
         User? FindByEmail(string email);

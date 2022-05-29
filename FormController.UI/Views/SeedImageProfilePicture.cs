@@ -1,6 +1,5 @@
 ﻿using FormController.UI.Controllers;
 using FormController.UI.Util;
-using System.Drawing.Imaging;
 
 namespace FormController.UI.Views
 {

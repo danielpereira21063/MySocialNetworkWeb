@@ -1,6 +1,4 @@
-﻿using MySocialNetwork.Infra.Data.Context;
-using FormController.UI.ClientHttp;
-using static System.Windows.Forms.ImageList;
+﻿using static System.Windows.Forms.ImageList;
 using FormController.UI.Services;
 
 namespace FormController.UI.Controllers
@@ -25,7 +23,6 @@ namespace FormController.UI.Controllers
                 int userId = 1;
 
                 var converter = new ImageConverter();
-                int acimaDe = 6;
                 foreach (var img in images)
                 {
                     var byteImage = (byte[])converter.ConvertTo(img, typeof(byte[]));

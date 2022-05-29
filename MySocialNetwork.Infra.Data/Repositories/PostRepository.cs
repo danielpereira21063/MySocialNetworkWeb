@@ -17,7 +17,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Post? Save(Post post)
         {
             _context.Posts.Add(post);
-            _context.SaveChanges();
             return post;
         }
 
@@ -48,7 +47,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
                 .Include(x => x.Comments)
                 .Include(x => x.Likes)
                 .ThenInclude(x => x.User)
-                .Include(x=>x.Images)
+                .Include(x => x.Images)
                 .OrderBy(x => x.CreatedAt)
                 .Take(24).ToList();
         }
@@ -56,6 +55,16 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Post? Find(int postId)
         {
             return _context.Posts.FirstOrDefault(x => x.Id.Equals(postId));
+        }
+
+        public async Task<bool> Commit()
+        {
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public Task RoolBack()
+        {
+            return Task.CompletedTask;
         }
     }
 }

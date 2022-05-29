@@ -16,7 +16,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Like? Save(Like like)
         {
             _context.Likes.Add(like);
-            _context.SaveChanges();
             return like;
         }
 
@@ -29,7 +28,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Like? Update(Like like)
         {
             _context.Likes.Update(like);
-            _context.SaveChanges();
             return like;
         }
 
@@ -41,6 +39,16 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Like? FindByPostId(int postId, int userId)
         {
             return _context.Likes.FirstOrDefault(x => x.Post.Id.Equals(postId) && x.User.Id.Equals(userId));
+        }
+
+        public Task<bool> Commit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RoolBack()
+        {
+            throw new NotImplementedException();
         }
     }
 }

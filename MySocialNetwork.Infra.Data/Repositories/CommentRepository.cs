@@ -19,7 +19,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
             comment.User = _context.Users.FirstOrDefault(x => x.Id.Equals(comment.User.Id));
 
             _context.Comments.Add(comment);
-            _context.SaveChanges();
             return comment;
         }
 
@@ -34,6 +33,16 @@ namespace MySocialNetwork.Infra.Data.Repositories
         }
 
         public Comment? Update(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Commit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RoolBack()
         {
             throw new NotImplementedException();
         }

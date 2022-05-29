@@ -1,8 +1,9 @@
 ﻿using MySocialNetwork.Domain.Entities.PostEntities;
+using MySocialNetwork.Domain.Interfaces.Abstractions;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IPostRepository
+    public interface IPostRepository : IUnitOfWork
     {
         List<Post>? FindAll(int userId);
         List<Post>? FindAll();

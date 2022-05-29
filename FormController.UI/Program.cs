@@ -1,7 +1,4 @@
 using FormController.UI.Views;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using MySocialNetwork.Infra.IoC;
 
 namespace FormController.UI
 {

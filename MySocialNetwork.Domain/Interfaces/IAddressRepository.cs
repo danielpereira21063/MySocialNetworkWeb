@@ -1,8 +1,9 @@
 ﻿using MySocialNetwork.Domain.Entities.UserEntities;
+using MySocialNetwork.Domain.Interfaces.Abstractions;
 
 namespace MySocialNetwork.Domain.Interfaces
 {
-    public interface IAddressRepository
+    public interface IAddressRepository : IUnitOfWork
     {
         Address? Find(int userId, int id);
         IEnumerable<Address>? FindAll(int userId);

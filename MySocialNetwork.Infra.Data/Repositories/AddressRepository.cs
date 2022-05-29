@@ -29,5 +29,15 @@ namespace MySocialNetwork.Infra.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> Commit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RoolBack()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

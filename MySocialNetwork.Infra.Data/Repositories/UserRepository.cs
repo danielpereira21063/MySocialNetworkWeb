@@ -16,7 +16,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public void Save(User user)
         {
             _context?.Add(user);
-            _context?.SaveChanges();
         }
 
         public User? Find(int id)
@@ -34,7 +33,6 @@ namespace MySocialNetwork.Infra.Data.Repositories
             var userEntity = _context.Users.FirstOrDefault(x => x.Id.Equals(user.Id));
             userEntity.ProfilePicture = user.ProfilePicture;
             _context.Users.Update(userEntity);
-            _context.SaveChanges();
         }
 
         public User? FindByEmail(string email)
@@ -63,6 +61,16 @@ namespace MySocialNetwork.Infra.Data.Repositories
             }
 
             return user.ProfilePicture;
+        }
+
+        public Task<bool> Commit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RoolBack()
+        {
+            throw new NotImplementedException();
         }
     }
 }
