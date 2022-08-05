@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace MySocialNetwork.Infra.Data.Migrations
 {
     public partial class DataSeed : Migration
@@ -135,7 +137,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
             comments.Add("Se for pra desistir, desista de ser fraco.⁠");
             comments.Add("Que todo mal vire amor, que toda dor vire flor.⁠");
 
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 int idxRandomName = random.Next(0, names.Count);
                 var name = names[idxRandomName];
@@ -156,19 +158,19 @@ namespace MySocialNetwork.Infra.Data.Migrations
             }
 
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
                 migrationBuilder.Sql($"INSERT INTO Posts (Id, UserId, Subtitle, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 6)}, '{subtitles[random.Next(0, subtitles.Count)]}', '{createdAt}', '{createdAt}')");
             }
 
-            for (int i = 1; i <= 250; i++)
+            for (int i = 1; i <= 500; i++)
             {
                 var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
                 migrationBuilder.Sql($"INSERT INTO Likes (Id, PostId, UserId,IsLiked, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 100)}, {random.Next(1, 30)}, {random.Next(0, 1)}, '{createdAt}', '{createdAt}')");
             }
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 var createdAt = RamdomDate(DateTime.Now.Year - 2, DateTime.Now.Year);
                 migrationBuilder.Sql($"INSERT INTO Comments (Id, PostId, Text ,UserId, CreatedAt, UpdatedAt) VALUES ({i}, {random.Next(1, 100)}, '{comments[random.Next(0, comments.Count)]}', {random.Next(1, 30)}, '{createdAt}', '{createdAt}')");
