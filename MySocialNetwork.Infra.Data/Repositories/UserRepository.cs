@@ -16,6 +16,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public void Save(User user)
         {
             _context?.Add(user);
+            _context.SaveChanges();
         }
 
         public User? Find(int id)

@@ -11,7 +11,7 @@ using MySocialNetwork.Infra.Data.Context;
 namespace MySocialNetwork.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220419231755_Initial")]
+    [Migration("20220802223137_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

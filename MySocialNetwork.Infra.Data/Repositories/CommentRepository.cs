@@ -19,6 +19,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
             comment.User = _context.Users.FirstOrDefault(x => x.Id.Equals(comment.User.Id));
 
             _context.Comments.Add(comment);
+            _context.SaveChanges();
             return comment;
         }
 

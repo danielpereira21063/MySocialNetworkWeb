@@ -42,7 +42,7 @@ namespace MySocialNetwork.Infra.IoC
             }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(option =>
-                option.AccessDeniedPath = "/Account/Login"
+                option.AccessDeniedPath = "/social-network/Account/Login"
             );
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
@@ -64,10 +64,10 @@ namespace MySocialNetwork.Infra.IoC
             services.AddScoped<ILikeService, LikeService>();
             services.AddScoped<ILikeRepository, LikeRepository>();
 
-            _StartAutoMapper(services);
+            StartAutoMapper(services);
         }
 
-        private static void _StartAutoMapper(IServiceCollection services)
+        private static void StartAutoMapper(IServiceCollection services)
         {
             var mapperConfiguration = new MapperConfiguration(config =>
             {

@@ -1,5 +1,5 @@
-﻿using static System.Windows.Forms.ImageList;
-using FormController.UI.Services;
+﻿using FormController.UI.Services;
+using static System.Windows.Forms.ImageList;
 
 namespace FormController.UI.Controllers
 {

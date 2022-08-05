@@ -104,14 +104,14 @@ namespace MySocialNetwork.WebUI.Controllers
                 return View(data);
             }
 
-            return Redirect($"/Account/Welcome?userName={data?.Name}");
+            return Redirect($"/social-network/Account/Welcome?userName={data?.Name}");
         }
 
         public async Task<IActionResult> Logout()
         {
             await _authentication.Logout();
 
-            return Redirect("/");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet("/Account/Welcome")]
@@ -120,7 +120,7 @@ namespace MySocialNetwork.WebUI.Controllers
 
             if (string.IsNullOrEmpty(userName))
             {
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewData["userName"] = userName;

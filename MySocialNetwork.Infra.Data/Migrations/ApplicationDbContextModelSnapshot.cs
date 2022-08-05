@@ -174,7 +174,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Image", b =>
@@ -199,7 +199,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Like", b =>
@@ -229,7 +229,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Likes", (string)null);
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.PostEntities.Post", b =>
@@ -254,7 +254,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.UserEntities.Address", b =>
@@ -300,7 +300,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Domain.Entities.UserEntities.User", b =>
@@ -332,7 +332,7 @@ namespace MySocialNetwork.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MySocialNetwork.Infra.Data.Identity.ApplicationUser", b =>

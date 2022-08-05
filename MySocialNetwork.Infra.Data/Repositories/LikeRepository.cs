@@ -16,6 +16,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Like? Save(Like like)
         {
             _context.Likes.Add(like);
+            _context.SaveChanges();
             return like;
         }
 
@@ -28,6 +29,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Like? Update(Like like)
         {
             _context.Likes.Update(like);
+            _context.SaveChanges();
             return like;
         }
 

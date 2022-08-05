@@ -17,6 +17,7 @@ namespace MySocialNetwork.Infra.Data.Repositories
         public Post? Save(Post post)
         {
             _context.Posts.Add(post);
+            _context.SaveChanges();
             return post;
         }
 
