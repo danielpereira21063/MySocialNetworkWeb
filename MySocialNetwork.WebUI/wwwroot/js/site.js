@@ -33,19 +33,21 @@ const links = document.querySelectorAll("a");
 links.forEach(x => {
     var link = x.href;
 
+    if (link.length == 0 && link.includes(baseUrl)) {
+        return;
+    }
+
     linksArray = link.split("/");
 
     link = "";
 
     linksArray.forEach((txt, idx) => {
         if (idx > 2) {
-            link += txt;
+            link += txt + "/";
         }
     });
 
-    if (link.length == 0 && link.includes(baseUrl)) {
-        return;
-    }
+    link = link.substring(0, link.length - 1);
 
     x.href = `${baseUrl}/${link}`;
 });
