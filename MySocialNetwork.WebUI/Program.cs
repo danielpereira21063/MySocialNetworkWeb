@@ -19,9 +19,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UsePathBase("/social-network");
-
 app.UseStaticFiles();
 
 app.UseRouting();

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Context\MigrationSeed\.20220419231922_DataSeed.cs_" />
+    <Compile Include="Context\MigrationSeed\.20220419231922_DataSeed.Designer.cs_" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MySocialNetwork.Domain\MySocialNetwork.Domain.csproj" />
   </ItemGroup>
 

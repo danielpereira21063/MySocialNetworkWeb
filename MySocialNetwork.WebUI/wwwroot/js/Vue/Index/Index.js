@@ -2,7 +2,6 @@ var httpRequest = new XMLHttpRequest;
 const AppIndex = {
     data() {
         return {
-            baseUrl:"/social-network",
             postViewModel: {
                 subtitle: "",
                 images: []
@@ -28,7 +27,7 @@ const AppIndex = {
                 });
             });
 
-            const url = this.baseUrl + "/post/create";
+            const url = "/post/create";
             httpRequest.open("POST", url);
             httpRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             var data = JSON.stringify(this.postViewModel);
@@ -45,7 +44,7 @@ const AppIndex = {
             };
         },
         getPosts() {
-            const url = this.baseUrl + "/post/getAll";
+            const url = "/post/getAll";
             httpRequest.open("GET", url);
             httpRequest.onreadystatechange = () => {
                 if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
@@ -59,7 +58,7 @@ const AppIndex = {
 
         getLoggedUser() {
             var thisvue = this;
-            const url = this.baseUrl + "/User/GetLogged";
+            const url = "/User/GetLogged";
             $.ajax({
                 type: "get",
                 url: url,
@@ -69,7 +68,7 @@ const AppIndex = {
             });
         },
         like(postId) {
-            const url = this.baseUrl + "/post/like/" + postId;
+            const url = "/post/like/" + postId;
             httpRequest.open("PUT", url);
             httpRequest.onreadystatechange = () => {
                 if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
@@ -80,13 +79,20 @@ const AppIndex = {
         },
         comment(postId) {
             const thisvue = this;
+            const comment = $(`#text-comment-${postId}`).val() ?? "";
+
+            if (comment.length == 0) {
+                alert("Comentário inválido");
+                return;
+            }
+
             $.ajax({
                 type: "post",
-                data: JSON.stringify($(`#text-comment-${postId}`).val()),
+                data: JSON.stringify(comment),
                 contentType: "application/json",
-                url: thisvue.baseUrl + "/post/comment/" + postId,
+                url: `/post/comment/${postId}`,
                 success: function (resp) {
-                    $(`#text-comment-${postId}`).val("");
+                    $(`#text-comment-${postId}`).val(comment);
                     thisvue.getPosts();
                 }
             });

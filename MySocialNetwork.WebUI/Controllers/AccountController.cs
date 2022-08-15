@@ -48,7 +48,7 @@ namespace MySocialNetwork.WebUI.Controllers
 
             if (string.IsNullOrEmpty(model.ReturnUrl))
             {
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
 
             return Redirect(model.ReturnUrl);
@@ -104,7 +104,7 @@ namespace MySocialNetwork.WebUI.Controllers
                 return View(data);
             }
 
-            return Redirect($"/social-network/Account/Welcome?userName={data?.Name}");
+            return Redirect($"/Account/Welcome?userName={data?.Name}");
         }
 
         public async Task<IActionResult> Logout()
